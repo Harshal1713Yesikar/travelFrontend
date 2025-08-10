@@ -52,7 +52,7 @@ const Home = () => {
     if (!data.email) return;
 
     try {
-      const res = await fetch("http://localhost:3001/subscribe", {
+      const res = await fetch(`${process.env.REACT_Backend_URL}/subscribe`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

@@ -29,7 +29,7 @@ const Login = () => {
     console.log("Form submitted with:", data);
 
     try {
-      const res = await fetch("http://localhost:3001/login", {
+      const res = await fetch(`${process.env.REACT_Backend_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

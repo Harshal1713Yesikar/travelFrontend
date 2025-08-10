@@ -109,7 +109,7 @@ const FlightSearch = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3001/flight', {
+      const response = await fetch(`${process.env.REACT_Backend_URL}/flight`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

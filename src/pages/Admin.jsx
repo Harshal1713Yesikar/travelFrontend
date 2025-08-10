@@ -2,6 +2,7 @@ import { UserX2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import useScrollAnimation from "../useScrollAnimation";
 import toast from "react-hot-toast";
+
 const Admin = () => {
 
 
@@ -14,7 +15,7 @@ const Admin = () => {
     const handleRemove = async (userId) => {
 
         try {
-            const res = await fetch(`http://localhost:3001/delete/${userId}`, { method: "DELETE" });
+            const res = await fetch(`${process.env.REACT_Backend_URL}/delete/${userId}`, { method: "DELETE" });
 
             const result = await res.json()
             console.log("user Deleted", result)
@@ -37,7 +38,7 @@ const Admin = () => {
 
     const fetchData = async () => {
         try {
-            const res = await fetch("http://localhost:3001/getData");
+            const res = await fetch(`${process.env.REACT_Backend_URL}/getData`);
             const result = await res.json();
             setData(result.data || result);
         } catch (error) {
