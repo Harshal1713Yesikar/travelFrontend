@@ -1,0 +1,13 @@
+.underline-custom {
+  position: relative;
+}
+
+.underline-custom::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px; /* Distance below text */
+  width: 100%;
+  height: 4px; /* Thickness */
+  background-color: rgb(230, 112, 28); /* Color */
+}
