@@ -19,7 +19,7 @@ const Booking = () => {
   const handleBooking = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${process.env.REACT_Backend_URL}/book`, {
+      const res = await fetch(`${process.env.REACT_APP_Backend_URL}/book`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

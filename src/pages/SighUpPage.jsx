@@ -37,7 +37,7 @@ const SignupPage = () => {
     console.log("Form submitted with:", data);
 
     try {
-      const response = await fetch(`${process.env.REACT_Backend_URL}/register`, {
+      const response = await fetch(`${process.env.REACT_APP_Backend_URL}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

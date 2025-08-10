@@ -15,7 +15,7 @@ const Admin = () => {
     const handleRemove = async (userId) => {
 
         try {
-            const res = await fetch(`${process.env.REACT_Backend_URL}/delete/${userId}`, { method: "DELETE" });
+            const res = await fetch(`${process.env.REACT_APP_Backend_URL}/delete/${userId}`, { method: "DELETE" });
 
             const result = await res.json()
             console.log("user Deleted", result)
@@ -38,7 +38,7 @@ const Admin = () => {
 
     const fetchData = async () => {
         try {
-            const res = await fetch(`${process.env.REACT_Backend_URL}/getData`);
+            const res = await fetch(`${process.env.REACT_APP_Backend_URL}/getData`);
             const result = await res.json();
             setData(result.data || result);
         } catch (error) {
