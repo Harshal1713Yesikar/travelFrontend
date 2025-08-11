@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useScrollAnimation from "../useScrollAnimation";
+import SplashCursor from "../components/nurui/splash-cursor";
 
 const hotels = [
   { id: 1, name: "Grand Palace Hotel", location: "Paris, France", price: "$120/AfterNoon", image: "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=600" },
@@ -173,6 +174,8 @@ const HotelList = ({ onSelectHotel }) => {
           </p>
         </div>
       </div>
+
+      <SplashCursor/>
      
     </>
   );

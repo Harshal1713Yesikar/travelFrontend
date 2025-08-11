@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Plane, MapPin, Calendar, Users, ArrowLeftRight, Phone, MessageCircle, Mail } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { Link } from "react-router-dom";
+import SplashCursor from '../components/nurui/splash-cursor';
 
 const FlightSearch = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -550,6 +551,7 @@ const FlightSearch = () => {
           </p>
         </div>
       </div>
+      <SplashCursor/>
     </div>
   );
 };

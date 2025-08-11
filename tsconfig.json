@@ -1,13 +1,18 @@
 {
   "compilerOptions": {
+    
     "allowJs": true,
     "checkJs": false,
     "jsx": "react-jsx",
+     "baseUrl": "src",
     "noEmit": true,
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "node",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": ["*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

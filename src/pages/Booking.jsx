@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import useScrollAnimation from "../useScrollAnimation";
 import toast from "react-hot-toast";
+import SplashCursor from "../components/nurui/splash-cursor";
 
 const Booking = () => {
   useScrollAnimation()
@@ -230,7 +231,7 @@ const Booking = () => {
           </p>
         </div>
       </div>
-
+ <SplashCursor />
     </>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState, useCallback } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import useScrollAnimation from "../useScrollAnimation";
+import SplashCursor from "../components/nurui/splash-cursor";
 
 const debounce = (func, wait) => {
   let timeout;
@@ -158,6 +159,7 @@ const SignupPage = () => {
           </p>
         </div>
       </div>
+      <SplashCursor/>
     </>
   );
 };

@@ -3,6 +3,7 @@ import { UserContatUs } from "../Store/Api";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import useScrollAnimation from "../useScrollAnimation";
+import SplashCursor from "../components/nurui/splash-cursor";
 
 const Contact = () => {
   useScrollAnimation()
@@ -234,8 +235,8 @@ const Contact = () => {
           </p>
         </div>
       </div>
+<SplashCursor/>
     </>
-
 
 
   );

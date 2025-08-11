@@ -2,6 +2,8 @@ import { UserX2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import useScrollAnimation from "../useScrollAnimation";
 import toast from "react-hot-toast";
+import SplashCursor from "../components/nurui/splash-cursor";
+
 
 const Admin = () => {
 
@@ -128,6 +130,7 @@ const Admin = () => {
                     </div>
                 </div>
             )}
+             <SplashCursor />
         </div>
     );
 };
