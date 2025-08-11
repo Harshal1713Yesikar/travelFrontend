@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import SplashCursor from "../components/nurui/splash-cursor";
 import GradientText from "components/nurui/gradient-text";
 import { GlowCard } from "../components/nurui/spotlight-card";
-import { cn } from "../lib/utils"; 
+import { cn } from "../lib/utils";
 import { GradientBackground } from "../components/nurui/gradient-background";
 const containerStyle = {
   display: "flex",
@@ -275,79 +275,71 @@ const Home = () => {
             <div div className=" text-[#14183E] mt-5 font-inika text-3xl md:text-5xl md:gap-5 font-bold">TOP DESTINATION</div>
           </div>
 
-          <div className="grid sm:grid-cols-2 justify-items-center lg:grid-cols-3 pt-16 gap-y-10 md:gap-10 animate-on-scroll">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-16 place-items-center">
 
-            <div className=" max-w-sm  transform transition-transform duration-500 hover:scale-105 hover:brightness-90 ">
-              <div className=" rounded-xl shadow-xl text-[#FFE6E3]">
-                <GlowCard className="h-[400px] w-[300px]">
-                  <img
-                    src="https://images.pexels.com/photos/1144275/pexels-photo-1144275.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt="Rome, Italy"
-                    className="mb-6 h-60 w-64 rounded-xl"
-                  />
+            <div className="rounded-xl shadow-xl text-[#FFE6E3] max-w-sm  transform transition-transform duration-500 hover:scale-105 hover:brightness-90 ">
+              <GlowCard className="h-[400px] w-[300px] flex flex-col items-center p-4">
+                <img
+                  src="https://images.pexels.com/photos/1144275/pexels-photo-1144275.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="Rome, Italy"
+                  className="mb-6 h-60 w-64 rounded-xl"
+                />
 
-                  <div className="text-center font-medium text-[#5E6282]">
-                    Rome, Italy <span className="ml-9"> $5.42k</span>
+                <div className="text-center font-medium text-[#5E6282]">
+                  Rome, Italy <span className="ml-9"> $5.42k</span>
 
-                    <div className="ml-2 flex text-center p-3">
-                      <div >
-                        <img
-                          className="my-3 hover:translate-y-[-2px] transition-transform duration-300"
-                          src="\Image\navigation 1.png"
-                          alt="Navigation Icon"
-                        />
-                      </div>
-                      <div className="ml-2 mt-2">10 day trip</div>
+                  <div className="ml-2 flex text-center p-3">
+                    <div >
+                      <img
+                        className="my-3 hover:translate-y-[-2px] transition-transform duration-300"
+                        src="\Image\navigation 1.png"
+                        alt="Navigation Icon"
+                      />
                     </div>
+                    <div className="ml-2 mt-2">10 day trip</div>
                   </div>
-                </GlowCard>
-              </div>
+                </div>
+              </GlowCard>
+
             </div>
 
 
-            <div className=" max-w-sm transform transition-transform duration-500 hover:scale-105 hover:brightness-90 ">
+            <div className=" rounded-xl  shadow-xl text-[#FFE6E3]  max-w-sm transform transition-transform duration-500 hover:scale-105 hover:brightness-90 ">
 
-              <div className="  rounded-xl  shadow-xl text-[#FFE6E3] "  >
-                <GlowCard className="h-[400px] w-[300px]">
+              <GlowCard className="h-[400px] w-[300px] flex flex-col items-center p-4">
 
-                  <img src="https://images.pexels.com/photos/372490/pexels-photo-372490.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""
-                    className=" mb-6 h-60 w-64 rounded-xl" />
+                <img src="https://images.pexels.com/photos/372490/pexels-photo-372490.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""
+                  className=" mb-6 h-60 w-64 rounded-xl" />
 
 
-                  <div className=" text-center font-medium  text-[#5E6282]">
-                    Landon,UK <span className="ml-9"> $4,2k</span>
+                <div className=" text-center font-medium  text-[#5E6282]">
+                  Landon,UK <span className="ml-9"> $4,2k</span>
 
-                    <div className=" flex text-center p-3 ">
-                      <div>
-                        <img className=" ml-4 my-3 hover:translate-y-[-2px] transition-transform duration-300 " src="\Image\navigation 1.png" alt="" />
-                      </div>
-                      <div className="ml-2 mt-2 ">12 day trip</div>
+                  <div className=" flex text-center p-3 ">
+                    <div>
+                      <img className=" ml-4 my-3 hover:translate-y-[-2px] transition-transform duration-300 " src="\Image\navigation 1.png" alt="" />
                     </div>
+                    <div className="ml-2 mt-2 ">12 day trip</div>
                   </div>
-                </GlowCard>
-              </div>
+                </div>
+              </GlowCard>
             </div>
 
             <div className=" -sm transform transition-transform duration-500 hover:scale-105 hover:brightness-90 ">
 
+              <GlowCard className="h-[400px] w-[300px] flex flex-col items-center p-4">
+                <img src="https://images.pexels.com/photos/3264723/pexels-photo-3264723.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""
+                  className=" mb-6 h-60 w-64 rounded-xl" />
+                <div className=" text-center font-medium  text-[#5E6282]">
+                  Full Europe <span className="ml-9"> $10,2k</span>
 
-              <GlowCard className="h-[400px] w-[300px]">
-
-        
-                  <img src="https://images.pexels.com/photos/3264723/pexels-photo-3264723.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""
-                    className=" mb-6 h-60 w-64 rounded-xl" />
-
-
-                  <div className=" text-center font-medium  text-[#5E6282]">
-                    Full Europe <span className="ml-9"> $10,2k</span>
-
-                    <div className=" flex text-center p-3 ">
-                      <div>
-                        <img className=" ml-4 my-3 hover:translate-y-[-2px] transition-transform duration-300 " src="\Image\navigation 1.png" alt="" />
-                      </div>
-                      <div className="ml-2 mt-2 ">28 day trip</div>
+                  <div className=" flex text-center p-3 ">
+                    <div>
+                      <img className=" ml-4 my-3 hover:translate-y-[-2px] transition-transform duration-300 " src="\Image\navigation 1.png" alt="" />
                     </div>
-                  </div>  
+                    <div className="ml-2 mt-2 ">28 day trip</div>
+                  </div>
+                </div>
               </GlowCard>
             </div>
           </div>
@@ -751,7 +743,7 @@ const Home = () => {
         </div>
       </div>
 
-     
+
       <SplashCursor />
     </>
 
