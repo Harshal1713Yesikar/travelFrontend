@@ -9,6 +9,7 @@ import GradientText from "components/nurui/gradient-text";
 import { GlowCard } from "../components/nurui/spotlight-card";
 import { cn } from "../lib/utils";
 import { GradientBackground } from "../components/nurui/gradient-background";
+import axios from "axios";
 const containerStyle = {
   display: "flex",
   gap: 24,
@@ -83,32 +84,32 @@ const Home = () => {
     e.preventDefault();
     if (!data.email) return;
 
+
     try {
-      const res = await fetch(`${process.env.REACT_APP_Backend_URL}/subscribe`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      },);
+      const res = await axios.post(
+        `${process.env.REACT_APP_Backend_URL}/subscribe`,
+        data,
+        { headers: { "Content-Type": "application/json" } }
+      );
 
-      const result = await res.json();
-      console.log("API Response:", result);
+      console.log("API Response:", res.data);
 
-      if (res.ok) {
-        setIsSubscribed(true);
-        toast.success("🎉 Subscribed successfully!", { position: "bottom-right" });
-        setData({ email: "" });
+      setIsSubscribed(true);
+      toast.success("🎉 Subscribed successfully!", { position: "bottom-right" });
+      setData({ email: "" });
 
+      setTimeout(() => {
+        setIsSubscribed(false);
+      }, 3000);
 
-        setTimeout(() => {
-          setIsSubscribed(false);
-        }, 3000);
-      } else {
-        toast.error(result.msg || "Subscription Failed", { position: "bottom-right" });
-      }
     } catch (error) {
       console.error("Subscription error:", error);
-      toast.error("Something went wrong!", { position: "bottom-right" });
+      toast.error(
+        error.response?.data?.msg || "Subscription Failed",
+        { position: "bottom-right" }
+      );
     }
+
   };
   useScrollAnimation()
   return (
@@ -744,7 +745,7 @@ const Home = () => {
       </div>
 
 
-      <SplashCursor />
+      {/* <SplashCursor /> */}
     </>
 
 

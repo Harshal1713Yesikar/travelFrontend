@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import useScrollAnimation from "../useScrollAnimation";
 import SplashCursor from "../components/nurui/splash-cursor";
+import axios from "axios";
 
 const debounce = (func, wait) => {
   let timeout;
@@ -37,33 +38,36 @@ const SignupPage = () => {
     setIsAdding(true);
     console.log("Form submitted with:", data);
 
+
     try {
-      const response = await fetch(`${process.env.REACT_APP_Backend_URL}/register`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_Backend_URL}/register`,
+        data,
+        { headers: { "Content-Type": "application/json" } }
+      );
 
-      const result = await response.json();
-      console.log("API Response:", result);
+      console.log("API Response:", res.data);
 
-      if (response.ok) {
-        setData({ name: "", username: "", email: "", password: "" });
-        toast.success("User registered successfully! ✅", { position: "bottom-right" });
-        navigate("/login");
-      } else {
-        if (result.msg === "User Already Registered") {
-          toast.error("User is already registered!", { position: "bottom-right" });
-        } else {
-          throw new Error(result.msg || "Registration Failed");
-        }
-      }
+      setData({ name: "", username: "", email: "", password: "" });
+      toast.success("User registered successfully! ✅", { position: "bottom-right" });
+      navigate("/login");
+
     } catch (error) {
       console.error("Error registering user:", error);
-      toast.error(error.message || "Something went wrong!", { position: "bottom-right" });
+
+      if (error.response?.data?.msg === "User Already Registered") {
+        toast.error("User is already registered!", { position: "bottom-right" });
+      } else {
+        toast.error(
+          error.response?.data?.msg || "Registration Failed",
+          { position: "bottom-right" }
+        );
+      }
+
     } finally {
       setIsAdding(false);
     }
+
   };
 
   const debouncedHandleSubmit = useCallback(debounce(handleSubmit, 2000), [data]);
@@ -159,7 +163,7 @@ const SignupPage = () => {
           </p>
         </div>
       </div>
-      <SplashCursor/>
+      {/* <SplashCursor /> */}
     </>
   );
 };

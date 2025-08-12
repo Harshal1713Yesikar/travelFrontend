@@ -13,6 +13,14 @@
   }
 }
 
+@media (max-width: 768px) {
+  .mobile-reduce-effects {
+    filter: none !important;
+    box-shadow: none !important;
+  }
+}
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

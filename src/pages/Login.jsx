@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import useScrollAnimation from "../useScrollAnimation";
 import SplashCursor from "../components/nurui/splash-cursor";
+import axios from "axios";
 
 const debounce = (func, wait) => {
   let timeout;
@@ -29,32 +30,32 @@ const Login = () => {
     setIsAdding(true);
     console.log("Form submitted with:", data);
 
-    try {
-      const res = await fetch(`${process.env.REACT_APP_Backend_URL}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-        
 
-      });
+try {
+  const res = await axios.post(
+    `${process.env.REACT_APP_Backend_URL}/login`,
+    data,
+    { headers: { "Content-Type": "application/json" } }
+  );
 
-      const result = await res.json();
-      console.log("API Response:", result);
+  console.log("API Response:", res.data);
 
-      if (res.ok) {
-        setData({ email: "", password: "" });
-        toast.success("User Logged In Successfully", { position: "bottom-right" });
-        localStorage.setItem("token", result.token);
-        navigate("/");
-      } else {
-         toast.error(result.msg || "Login Failed", { position: "bottom-right" });
-      }
-    } catch (error) {
-      console.error("Error logging in:", error);
-      toast.error("Something went wrong!", { position: "bottom-right" });
-    } finally {
-      setIsAdding(false);
-    }
+  setData({ email: "", password: "" });
+  toast.success("User Logged In Successfully", { position: "bottom-right" });
+
+  localStorage.setItem("token", res.data.token);
+  navigate("/");
+
+} catch (error) {
+  console.error("Error logging in:", error);
+  toast.error(
+    error.response?.data?.msg || "Login Failed",
+    { position: "bottom-right" }
+  );
+} finally {
+  setIsAdding(false);
+}
+
   };
 
   const handleSubmit = (e) => {
@@ -129,7 +130,7 @@ const Login = () => {
           </p>
         </div>
       </div>
-    <SplashCursor/>
+    {/* <SplashCursor/> */}
     </>
   );
 };

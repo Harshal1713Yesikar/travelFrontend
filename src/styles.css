@@ -11,3 +11,10 @@
   height: 4px; /* Thickness */
   background-color: rgb(230, 112, 28); /* Color */
 }
+
+@media (max-width: 768px) {
+  .mobile-reduce-effects {
+    filter: none !important;
+    box-shadow: none !important;
+  }
+}

@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import useScrollAnimation from "../useScrollAnimation";
 import SplashCursor from "../components/nurui/splash-cursor";
+import axios from "axios";
 
 const Contact = () => {
   useScrollAnimation()
@@ -19,27 +20,29 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch(`${process.env.REACT_APP_Backend_URL}/contactUs`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const result = await response.json();
-      console.log("API Response:", result);
-      if (response.ok) {
-        setData({ name: "", email: "", message: "" });
-        toast.success("Message Sent Successfully", {
-          position: 'bottom-right'
-        });
-      } else {
-        throw new Error(result.message || "Something went wrong!");
-      }
-    } catch (error) {
-      console.error("API Call Failed:", error);
+   
+try {
+  const res = await axios.post(
+    `${process.env.REACT_APP_Backend_URL}/contactUs`,
+    data, 
+    {
+      headers: { "Content-Type": "application/json" }
     }
+  );
+
+  console.log("API Response:", res.data);
+
+  setData({ name: "", email: "", message: "" });
+  toast.success("Message Sent Successfully", {
+    position: "bottom-right"
+  });
+
+} catch (error) {
+  console.error("API Call Failed:", error);
+  toast.error(error.response?.data?.message || "Something went wrong!", {
+    position: "bottom-right"
+  });
+}
   };
 
 
@@ -235,7 +238,7 @@ const Contact = () => {
           </p>
         </div>
       </div>
-<SplashCursor/>
+{/* <SplashCursor/> */}
     </>
 
 

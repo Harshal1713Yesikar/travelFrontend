@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import useScrollAnimation from "../useScrollAnimation";
 import toast from "react-hot-toast";
 import SplashCursor from "../components/nurui/splash-cursor";
-
-
+import axios from "axios";
 const Admin = () => {
 
 
@@ -16,33 +15,31 @@ const Admin = () => {
 
     const handleRemove = async (userId) => {
 
+
+
         try {
-            const res = await fetch(`${process.env.REACT_APP_Backend_URL}/delete/${userId}`, { method: "DELETE" });
+            const res = await axios.delete(
+                `${process.env.REACT_APP_Backend_URL}/delete/${userId}`
+            );
 
-            const result = await res.json()
-            console.log("user Deleted", result)
+            console.log("User Deleted", res.data);
 
-            if (res.ok) {
-                toast.success("User removed successfully", { position: "bottom-right" });
-                fetchData();
-                setShowPopup(false);
-            }
-            else {
-                toast.error(result.msg || "Failed to delete user", { position: "bottom-right" });
-            }
+            toast.success("User removed successfully", { position: "bottom-right" });
+            fetchData();
+            setShowPopup(false);
         } catch (error) {
-
             console.error("Delete error:", error);
-            toast.error("Something went wrong!");
-
+            toast.error(
+                error.response?.data?.msg || "Failed to delete user",
+                { position: "bottom-right" }
+            );
         }
-    };
+    }
 
     const fetchData = async () => {
         try {
-            const res = await fetch(`${process.env.REACT_APP_Backend_URL}/getData`);
-            const result = await res.json();
-            setData(result.data || result);
+            const res = await axios.get(`${process.env.REACT_APP_Backend_URL}/getData`);
+            setData(res.data.data || res.data);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
@@ -130,7 +127,7 @@ const Admin = () => {
                     </div>
                 </div>
             )}
-             <SplashCursor />
+            {/* <SplashCursor />     */}
         </div>
     );
 };

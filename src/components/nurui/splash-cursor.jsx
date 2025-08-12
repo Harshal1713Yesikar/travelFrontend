@@ -558,7 +558,7 @@ export default function SplashCursor({
       uniform sampler2D uVelocity;
 
       void main () {
-          float L = texture2D(uPressure, vL).x;
+          float L = texture2D(uPressure, vL).x; 
           float R = texture2D(uPressure, vR).x;
           float T = texture2D(uPressure, vT).x;
           float B = texture2D(uPressure, vB).x;
