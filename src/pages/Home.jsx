@@ -301,7 +301,6 @@ const Home = () => {
                   </div>
                 </div>
               </GlowCard>
-
             </div>
 
 
@@ -326,8 +325,7 @@ const Home = () => {
               </GlowCard>
             </div>
 
-            <div className=" -sm transform transition-transform duration-500 hover:scale-105 hover:brightness-90 ">
-
+            <div className=" -sm transform transition-transform duration-500 hover:scale-105 hover:brightness-90" >
               <GlowCard className="h-[400px] w-[300px] flex flex-col items-center p-4">
                 <img src="https://images.pexels.com/photos/3264723/pexels-photo-3264723.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""
                   className=" mb-6 h-60 w-64 rounded-xl" />

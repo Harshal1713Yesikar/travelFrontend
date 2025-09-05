@@ -28,7 +28,6 @@ const HotelList = ({ onSelectHotel }) => {
       <div
         key={hotel.id}
         className="shadow-lg rounded-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300"
-        onClick={() => onSelectHotel(hotel)}
       >
         <img
           src={hotel.image}

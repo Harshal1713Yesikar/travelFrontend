@@ -5,6 +5,7 @@ import useScrollAnimation from "../useScrollAnimation";
 import SplashCursor from "../components/nurui/splash-cursor";
 import axios from "axios";
 
+
 const debounce = (func, wait) => {
   let timeout;
   return (...args) => {
@@ -31,36 +32,36 @@ const Login = () => {
     console.log("Form submitted with:", data);
 
 
-try {
-  const res = await axios.post(
-    `${process.env.REACT_APP_Backend_URL}/login`,
-    data,
-    { headers: { "Content-Type": "application/json" } }
-  );
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_Backend_URL}/login`,
+        data,
+        { headers: { "Content-Type": "application/json" } }
+      );
 
-  console.log("API Response:", res.data);
+      console.log("API Response:", res.data);
 
-  setData({ email: "", password: "" });
-  toast.success("User Logged In Successfully", { position: "bottom-right" });
+      setData({ email: "", password: "" });
+      toast.success("User Logged In Successfully", { position: "bottom-right" });
 
-  localStorage.setItem("token", res.data.token);
-  navigate("/");
+      localStorage.setItem("token", res.data.token);
+      navigate("/");
 
-} catch (error) {
-  console.error("Error logging in:", error);
-  toast.error(
-    error.response?.data?.msg || "Login Failed",
-    { position: "bottom-right" }
-  );
-} finally {
-  setIsAdding(false);
-}
+    } catch (error) {
+      console.error("Error logging in:", error);
+      toast.error(
+        error.response?.data?.msg || "Login Failed",
+        { position: "bottom-right" }
+      );
+    } finally {
+      setIsAdding(false);
+    }
 
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(); 
+    handleLogin();
   };
 
   return (
@@ -130,7 +131,7 @@ try {
           </p>
         </div>
       </div>
-    {/* <SplashCursor/> */}
+      {/* <SplashCursor/> */}
     </>
   );
 };

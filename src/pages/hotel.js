@@ -1,17 +1,17 @@
-// import React, { useState } from "react";
-// import HotelList from "./HotelList";
-// import HotelDetails from "./HotelDetails"; // Ensure this component exists
+import React, { useState } from "react";
+import HotelList from "./HotelList";
+import HotelDetails from "./HotelDetails"; // Ensure this component exists
 
-// const Hotels = () => {
-//   const [selectedHotel, setSelectedHotel] = useState(null);
+const Hotels = () => {
+  const [selectedHotel, setSelectedHotel] = useState(null);
 
-//   return (
-//     <div className="container mx-auto">
-//       <HotelList onSelectHotel={setSelectedHotel} />
+  return (
+    <div className="container mx-auto">
+      <HotelList onSelectHotel={setSelectedHotel} />
 
-//       {selectedHotel && <HotelDetails hotel={selectedHotel} onClose={() => setSelectedHotel(null)} />}
-//     </div>
-//   );
-// };
+      {selectedHotel && <HotelDetails hotel={selectedHotel} onClose={() => setSelectedHotel(null)} />}
+    </div>
+  );
+};
 
-// export default Hotels;
+export default Hotels;
