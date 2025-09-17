@@ -108,7 +108,7 @@ const Layout = ({ children }) => {
               className="block py-2 text-gray-700 hover:text-orange-500"
               onClick={() => setIsOpen(false)}
             >
-              Destination
+              Home
             </Link>
                   <Link
                 to="/hotelList"
