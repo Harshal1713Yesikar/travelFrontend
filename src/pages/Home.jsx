@@ -394,6 +394,7 @@ const Home = () => {
                 <img src="/Image/Ellipse 8.png" alt="Decorative Ellipse" />
               </div>
 
+
               <div className="relative z-10 bg-white shadow-lg rounded-[25px] p-6">
                 <img src="/Image/Bookingimg.jpg" alt="Trip to Greece image" className="rounded-lg mx-auto" />
                 <p className="text-[#080809] mt-6 font-bold">Trip to Greece</p>

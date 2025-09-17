@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    
+     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
     "allowJs": true,
     "checkJs": false,
-    "jsx": "react-jsx",
      "baseUrl": "src",
     "noEmit": true,
     "module": "esnext",

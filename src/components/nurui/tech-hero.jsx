@@ -98,7 +98,7 @@ const TechHero = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.8 }}>
                 <div className="relative w-48 h-48">
-                  {/* Abstract Logo */}
+              
                   <svg viewBox="0 0 200 200" className="w-full h-full">
                     <motion.path
                       d="M100,20 L160,50 L160,150 L100,180 L40,150 L40,50 Z"

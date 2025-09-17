@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
-import HotelDropdown from "./HotelDropdown";
 import { UserRoundCheck } from "lucide-react";
 
 const Layout = ({ children }) => {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); 
- //sdwfefrfer
+  const [isOpen, setIsOpen] = useState(false);
+
   useEffect(() => {
     const user = localStorage.getItem("user");
     if (user) {
@@ -43,9 +42,16 @@ const Layout = ({ children }) => {
                 to="/"
                 className="text-gray-700 hover:text-orange-500 transition-transform duration-300 font-medium"
               >
-                Destination
+                Home
               </Link>
-              <HotelDropdown />
+
+              <Link
+                to="/hotelList"
+                className="text-gray-700 hover:text-orange-500 transition-transform duration-300 font-medium"
+              >
+                Destination
+
+              </Link>
               <Link
                 to="/flight"
                 className="text-gray-700 hover:text-orange-500 transition-transform duration-300 font-medium"
@@ -71,6 +77,7 @@ const Layout = ({ children }) => {
               >
                 Login
               </button>
+              
 
               <Link
                 to="/Admin"
@@ -103,7 +110,13 @@ const Layout = ({ children }) => {
             >
               Destination
             </Link>
-            <HotelDropdown />
+                  <Link
+                to="/hotelList"
+                className="text-gray-700 hover:text-orange-500 transition-transform duration-300 font-medium"
+              >
+                Destination
+
+              </Link>
             <Link
               to="/flight"
               className="block py-2 text-gray-700 hover:text-orange-500"

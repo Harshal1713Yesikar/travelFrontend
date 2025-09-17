@@ -6,9 +6,8 @@ import { ArrowRight } from "lucide-react";
 const WavesHero = () => {
   return (
     <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden pt-16">
-      {/* Animated Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Curved Lines */}
+      
         <svg
           className="absolute h-full w-full"
           xmlns="http://www.w3.org/2000/svg">
@@ -24,7 +23,6 @@ const WavesHero = () => {
               <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0" />
             </linearGradient>
           </defs>
-          {/* Top Curves */}
           <motion.path
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
@@ -56,7 +54,6 @@ const WavesHero = () => {
             stroke="url(#grad2)"
             strokeWidth="1"
           />
-          {/* Bottom Curves */}
           <motion.path
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
@@ -75,7 +72,6 @@ const WavesHero = () => {
           />
         </svg>
 
-        {/* Straight Lines */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -108,7 +104,7 @@ const WavesHero = () => {
         </motion.div>
       </div>
 
-      {/* Animated Background */}
+    
       <div className="absolute inset-0 z-[1]">
         <motion.div
           initial={{ opacity: 0 }}
@@ -124,7 +120,7 @@ const WavesHero = () => {
         />
       </div>
 
-      {/* Content */}
+     
       <div className="container relative z-[3] px-4 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

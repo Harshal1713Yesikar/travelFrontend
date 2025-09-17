@@ -20,29 +20,29 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
-try {
-  const res = await axios.post(
-    `${process.env.REACT_APP_Backend_URL}/contactUs`,
-    data, 
-    {
-      headers: { "Content-Type": "application/json" }
+
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_Backend_URL}/contactUs`,
+        data,
+        {
+          headers: { "Content-Type": "application/json" }
+        }
+      );
+
+      console.log("API Response:", res.data);
+
+      setData({ name: "", email: "", message: "" });
+      toast.success("Message Sent Successfully", {
+        position: "bottom-right"
+      });
+
+    } catch (error) {
+      console.error("API Call Failed:", error);
+      toast.error(error.response?.data?.message || "Something went wrong!", {
+        position: "bottom-right"
+      });
     }
-  );
-
-  console.log("API Response:", res.data);
-
-  setData({ name: "", email: "", message: "" });
-  toast.success("Message Sent Successfully", {
-    position: "bottom-right"
-  });
-
-} catch (error) {
-  console.error("API Call Failed:", error);
-  toast.error(error.response?.data?.message || "Something went wrong!", {
-    position: "bottom-right"
-  });
-}
   };
 
 
@@ -238,7 +238,7 @@ try {
           </p>
         </div>
       </div>
-{/* <SplashCursor/> */}
+      {/* <SplashCursor/> */}
     </>
 
 

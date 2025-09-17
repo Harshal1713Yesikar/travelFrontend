@@ -136,7 +136,7 @@ try {
     departureCity: "",
     arrivalCity: "",
     departureDate: "",
-    passengers: 1,
+
     tripType: "one-way",
     returnDate: "",
   });
@@ -357,8 +357,6 @@ try {
                     <input
                       name="passengers"
                       type="number"
-                      min="1"
-                      max="9"
                       value={formData.passengers.toString()}
                       onChange={handleInputChange}
                       className={`w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${
@@ -551,7 +549,7 @@ try {
           </p>
         </div>
       </div>
-      {/* <SplashCursor/> */}
+    
     </div>
   );
 };
