@@ -11,6 +11,8 @@ import Login from "./pages/Login";
 import { Toaster } from "react-hot-toast";
 import Admin from "./pages/Admin";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import BookingsList from "./pages/HotelList";
+import AddDestination from "./components/DestinationMap/AddDestination";
 
 const App = () => {
   
@@ -29,8 +31,12 @@ const App = () => {
               <Route path="/login" element={<Login />}/>
               <Route path="/sighup" element={<SighupPage />} />
               <Route path="/admin" element={<Admin/>}/>
+              <Route path="/hotelList" element={<HotelList />} />
+              <Route path="/AddDestination" element={<AddDestination/>} />
             </>
         </Routes> 
+              <Toaster position="bottom-right" reverseOrder={false} />
+
       </Layout>
     </Router>
        </LanguageProvider>

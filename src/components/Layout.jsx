@@ -58,12 +58,12 @@ const Layout = ({ children }) => {
               >
                 Flights
               </Link>
-              <Link
+              {/* <Link
                 to="/booking"
                 className="text-gray-700 hover:text-orange-500 transition-transform duration-300 font-medium"
               >
                 Bookings
-              </Link>
+              </Link> */}
               <Link
                 to="/contactUs"
                 className="text-gray-700 hover:text-orange-500 transition-transform duration-300 font-medium"
@@ -124,13 +124,13 @@ const Layout = ({ children }) => {
             >
               Flights
             </Link>
-            <Link
+            {/* <Link
               to="/booking"
               className="block py-2 text-gray-700 hover:text-orange-500"
               onClick={() => setIsOpen(false)}
             >
               Bookings
-            </Link>
+            </Link> */}
             <Link
               to="/contactUs"
               className="block py-2 text-gray-700 hover:text-orange-500"

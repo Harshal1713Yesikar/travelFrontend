@@ -126,7 +126,7 @@ const Home = () => {
 
             <div>
               <GradientText>
-                <p className="text-6xl font-black">
+                <p className="text-6xl font-black ">
                   Travel, enjoy <br /> and live a new <br /> and full life
                 </p>
               </GradientText>
@@ -614,12 +614,13 @@ const Home = () => {
       </div>
 
 
-      <div className="bg-gray-100 py-16  px-6 mt-16 sm:px-12 lg:px-16">
-        <div className="flex flex-col md:flex-row justify-center gap-12 md:gap-24 mt-12 animate-on-scroll">
+      <div className="bg-gray-100 py-16 px-6 mt-16 sm:px-12 lg:px-20">
+        <div className="flex flex-col md:flex-row justify-center gap-2 md:gap-16 mt-12 animate-on-scroll">
           <div className="text-center md:text-left">
             <p className="font-poppins font-semibold text-4xl">Jaddoo.</p>
-            <p className="w-full md:w-64 text-[#5E6282] mt-7 font-normal">
-              Book your trip in minutes and get full control for much longer.
+            <p className="w-96 md:w-68 text-[#5E6282] mt-7 font-semibold">
+               Your trusted travel companion for discovering amazing destinations, 
+              booking hotels, and creating unforgettable memories around the world.
             </p>
           </div>
 
@@ -738,7 +739,7 @@ const Home = () => {
 
         <div className="mt-16 flex justify-center border-t pt-6">
           <p className="text-slate-600 font-serif font-bold">
-            All rights reserved @jadoo.com
+            © 2025 @jadoo.com All rights reserved.
           </p>
         </div>
       </div>

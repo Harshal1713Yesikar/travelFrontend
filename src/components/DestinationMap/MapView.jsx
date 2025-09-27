@@ -71,13 +71,13 @@ const MapView = () => {
         </div>
       </div>
 
-      <div className="w-full md:w-80 p-4 md:p-6 border-t md:border-t-0 md:border-l border-gray-200 bg-gray-50">
+      <div className="w-full md:w-80 p-4 md:p-6 border-t md:border-t-0 md:border-l border-gray-200 bg-gray-50 ">
         {selectedLocation ? (
           <div>
             <img
               src={selectedLocation.image}
               alt={selectedLocation.name}
-              className="w-full h-40 md:h-44 object-cover rounded-lg mb-4"
+              className="w-full h-40 md:h-44 object-cover rounded-lg mb-4 mt-14"
             />
             <h3 className="text-lg font-semibold text-gray-900 mb-2">{selectedLocation.name}</h3>
             <div className="flex items-center mb-4">
@@ -102,7 +102,7 @@ const MapView = () => {
             </button>
           </div>
         ) : (
-          <div className="text-center text-gray-500 mt-8 md:mt-16">
+          <div className="text-center text-gray-500 mt-8 md:mt-40">
             <MapPin className="h-10 w-10 mx-auto mb-4 opacity-50 md:h-12 md:w-12" />
             <p>Select a location on the map to view details</p>
           </div>
