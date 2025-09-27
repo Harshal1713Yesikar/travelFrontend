@@ -24,7 +24,6 @@ export const InfoCard = ({
 }) => {
   const [hovered, setHovered] = useState(false);
   const borderRef = useRef(null);
-  // Mouse movement for rotating border
   const handleMouseMove = (e) => {
     const border = borderRef.current;
     if (!border) return;

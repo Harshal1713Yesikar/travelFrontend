@@ -38,7 +38,6 @@ const Admin = () => {
     }
   };
 
-  // 🔥 Fetch Data
   const fetchData = async () => {
     setIsLoading(true); 
 

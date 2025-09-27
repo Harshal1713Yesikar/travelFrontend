@@ -30,6 +30,11 @@ module.exports = {
         slideIn: 'slideInFromLeft 1s ease-in-out',
          slideFromLeft: 'slideFromLeft 2s ease-out'
       },
+
+         height: {
+        '36rem': '36rem',
+        '50rem': '50rem',
+      },
     },
   },
   plugins: [],

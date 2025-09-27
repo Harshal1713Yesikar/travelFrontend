@@ -18,10 +18,7 @@ const DestinationCard = ({ destination }) => {
     setIsOpen(false);
   };
   
-  // const confirmSave = () => {
-  //   handleAdd();
-  //   setIsOpen(false);
-  // };
+
 
 
   const handleWishlistToggle = () => {

@@ -128,7 +128,7 @@ try {
   );
 
   toast.success("Flight search completed successfully!", {
-    position: "top-right",
+    position: "bottom-right",
     duration: 4000,
   });
 
@@ -136,7 +136,7 @@ try {
     departureCity: "",
     arrivalCity: "",
     departureDate: "",
-
+ passengers: 1,
     tripType: "one-way",
     returnDate: "",
   });

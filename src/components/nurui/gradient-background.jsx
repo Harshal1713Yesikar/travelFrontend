@@ -17,7 +17,6 @@ export const GradientBackground = ({
   containerClassName,
 }) => {
   const interactiveRef = useRef(null);
-  // Use refs to store animation values instead of state
   const curXRef = useRef(0);
   const curYRef = useRef(0);
   const tgXRef = useRef(0);
@@ -25,10 +24,8 @@ export const GradientBackground = ({
   const animationFrameRef = useRef(null);
   const [isSafari, setIsSafari] = useState(false);
   const { theme } = useTheme();
-  // Set up gradient background colors based on theme
   const gradientBackgroundStart = theme === "dark" ? "#01031333" : "#ffffff";
   const gradientBackgroundEnd = theme === "dark" ? "#01031333" : "#ffffff";
-  // Set up CSS variables
   useEffect(() => {
     document.body.style.setProperty(
       "--gradient-background-start",
@@ -58,11 +55,9 @@ export const GradientBackground = ({
     size,
     blendingValue,
   ]);
-  // Set up Safari detection
   useEffect(() => {
     setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
   }, []);
-  // Set up animation loop
   useEffect(() => {
     if (!interactive) return;
     function animateMovement() {
@@ -70,30 +65,23 @@ export const GradientBackground = ({
         animationFrameRef.current = requestAnimationFrame(animateMovement);
         return;
       }
-      // Calculate new position with easing
       curXRef.current =
         curXRef.current + (tgXRef.current - curXRef.current) / 20;
       curYRef.current =
         curYRef.current + (tgYRef.current - curYRef.current) / 20;
-      // Apply transform directly to DOM element
       interactiveRef.current.style.transform = `translate(${Math.round(curXRef.current)}px, ${Math.round(curYRef.current)}px)`;
-      // Continue animation loop
       animationFrameRef.current = requestAnimationFrame(animateMovement);
     }
-    // Start animation loop
     animationFrameRef.current = requestAnimationFrame(animateMovement);
-    // Clean up animation loop on unmount
     return () => {
       if (animationFrameRef.current !== null) {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
   }, [interactive]);
-  // Handle mouse movement
   const handleMouseMove = (event) => {
     if (!interactiveRef.current) return;
     const rect = interactiveRef.current.getBoundingClientRect();
-    // Update target position directly in ref (no state update)
     tgXRef.current = event.clientX - rect.left;
     tgYRef.current = event.clientY - rect.top;
   };
