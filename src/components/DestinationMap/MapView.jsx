@@ -293,9 +293,7 @@ const MapView = () => {
 
   return (
   
-//  <div className="bg-white rounded-2xl shadow-2xl overflow-hidden h-[50rem] flex flex-col lg:flex-row">
-<div className="bg-white rounded-2xl shadow-2xl overflow-hidden h-full  flex flex-col lg:flex-row">
-
+ <div className="bg-white rounded-2xl shadow-2xl overflow-hidden h-[36rem] flex flex-col lg:flex-row ">
 
     <div className="relative flex-1 min-h-[300px] sm:min-h-[400px]"> <div ref={mapRef} className="w-full h-full" />
 
@@ -322,7 +320,7 @@ const MapView = () => {
       </div>
     </div>
 
-    <div className="w-full lg:w-96 p-8    border-t lg:border-t-0 lg:border-l border-gray-100 bg-gradient-to-b from-gray-50 to-white">
+    <div className="w-full lg:w-96 p-8  border-t lg:border-t-0 lg:border-l border-gray-100 bg-gradient-to-b from-gray-50 to-white">
       {selectedLocation ? (
         <div>
           <img
