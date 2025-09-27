@@ -618,8 +618,8 @@ const Home = () => {
         <div className="flex flex-col md:flex-row justify-center gap-2 md:gap-16 mt-12 animate-on-scroll">
           <div className="text-center md:text-left">
             <p className="font-poppins font-semibold text-4xl">Jaddoo.</p>
-            <p className="w-96 md:w-68 text-[#5E6282] mt-7 font-semibold">
-               Your trusted travel companion for discovering amazing destinations, 
+           <p className="w-80 md:w-68 text-[#5E6282] mt-7 font-semibold">
+              Your trusted travel companion for discovering amazing destinations,
               booking hotels, and creating unforgettable memories around the world.
             </p>
           </div>
