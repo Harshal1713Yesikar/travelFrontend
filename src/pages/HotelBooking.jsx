@@ -66,17 +66,26 @@ export function HotelBooking() {
   return (
   <>
     <div className="min-h-screen bg-gray-50">
-      <div
-
-       className="bg-gradient-to-r from-blue-600 to-purple-700 text-white">
-
-        <div className="container mx-auto px-4 py-16"> <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Find Your Perfect Stay</h1>
-          <p className="text-xl text-blue-100">Discover amazing hotels in India with the best prices</p>
-        </div> <SearchBar filters={filters} onFiltersChange={setFilters} />
+      <div className="relative bg-gradient-to-r  text-white overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat "
+          style={{
+            backgroundImage: 'url(https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1920)',
+          }}
+        />
+    
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-800/30 to-purple-900/30" />
+        
+        <div className="container mx-auto px-4 py-16">
+          <div className="text-center mb-8">
+            <h1 className="relative z-10 text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Find Your Perfect Stay</h1>
+            <p className="relative z-10 text-xl text-blue-100 drop-shadow-md">Discover amazing hotels in India with the best prices</p>
+          </div>
+          <div className="relative z-10">
+            <SearchBar filters={filters} onFiltersChange={setFilters} />
+          </div>
         </div>
       </div>
-
 
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
@@ -148,6 +157,9 @@ export function HotelBooking() {
         />
       )}
     </div>
+
+
+    
 
      <div className="bg-gray-100 py-16 px-6 mt-16 sm:px-12 lg:px-20">
             <div className="flex flex-col md:flex-row justify-center gap-2 md:gap-16 mt-12 animate-on-scroll">

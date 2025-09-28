@@ -142,6 +142,8 @@ export function SearchBar({ filters, onFiltersChange }) {
           Search Hotels
         </button>
       </div>
+
+      
     </div>
   );
 }

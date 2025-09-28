@@ -306,7 +306,7 @@ const MapView = () => {
 
   return (
   
- <div className="bg-white rounded-2xl shadow-2xl overflow-hidden h-[36rem] flex flex-col lg:flex-row ">
+ <div className="bg-white rounded-2xl shadow-2xl overflow-hidden h-[50rem] flex flex-col lg:flex-row ">
 
     <div className="relative flex-1 min-h-[300px] sm:min-h-[400px]"> <div ref={mapRef} className="w-full h-full" />
 
@@ -370,17 +370,17 @@ const MapView = () => {
 
     {showDetails && selectedLocation && (
       <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 px-4">
-        <div className="bg-white p-4 sm:p-6 rounded-xl max-w-lg w-full relative max-h-[90vh] overflow-y-auto">
+        <div className="bg-white p-9 sm:p-9 rounded-xl max-w-lg w-full relative max-h-[90vh] overflow-y-auto">
           <button
             onClick={() => setShowDetails(false)}
             className="absolute top-3 right-3 text-gray-500"
           >
-            <CircleX className="w-6 h-6" />
+            <CircleX className="w-6 h-6 "  />
           </button>
           <img
             src={selectedLocation.image}
             alt={selectedLocation.name}
-            className="w-full h-48 sm:h-60 object-cover rounded-lg mb-4"
+            className="w-full h-48  sm:h-60  object-cover rounded-lg mb-4"
           />
           <h2 className="text-lg sm:text-xl font-bold mb-2">
             {selectedLocation.name}
