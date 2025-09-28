@@ -1,70 +1,92 @@
 import React, { useState } from 'react';
 import { X, Calendar, Users, MapPin, Star, CreditCard, User } from 'lucide-react';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 export function BookingModal({
-hotel,
-isOpen,
-onClose,
-onConfirm,
-checkIn,
-checkOut,
-guests
+  hotel,
+  isOpen,
+  onClose,
+  onConfirm,
+  checkIn,
+  checkOut,
+  guests
 }) {
-const [formData, setFormData] = useState({
-firstName: '',
-lastName: '',
-email: '',
-phone: '',
-specialRequests: '',
-cardNumber: '',
-expiryDate: '',
-cvv: '',
-cardName: ''
-});
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    specialRequests: '',
+    checkIn,
+    checkOut,
+    guests
+  });
 
-const calculateNights = () => {
-if (!checkIn || !checkOut) return 1;
-const start = new Date(checkIn);
-const end = new Date(checkOut);
-const nights = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
-return nights > 0 ? nights : 1;
-};
+  const calculateNights = () => {
+    if (!checkIn || !checkOut) return 1;
+    const start = new Date(checkIn);
+    const end = new Date(checkOut);
+    const nights = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
+    return nights > 0 ? nights : 1;
+  };
 
-const nights = calculateNights();
-const subtotal = hotel.price * nights;
-const taxes = subtotal * 0.12;
-const total = subtotal + taxes;
+  const nights = calculateNights();
+  const subtotal = hotel.price * nights;
+  const taxes = subtotal * 0.12;
+  const total = subtotal + taxes;
 
-const handleSubmit = (e) => {
-e.preventDefault();
-const bookingData = {
-hotelId: hotel.id,
-checkIn,
-checkOut,
-guests,
-totalPrice: total,
-guestInfo: {
-firstName: formData.firstName,
-lastName: formData.lastName,
-email: formData.email,
-phone: formData.phone,
-specialRequests: formData.specialRequests
-}
-};
-onConfirm(bookingData);
-};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-const handleInputChange = (field, value) => {
-setFormData(prev => ({ ...prev, [field]: value }));
-};
+    const bookingData = {
+      firstname: formData.firstName,
+      lastname: formData.lastName,
+      email: formData.email,
+      phone: formData.phone,
+      msg: formData.specialRequests,
+      totalPrice: total,
+      hotelName: hotel.name,
+      hotelLocation: hotel.location,
+      hotelImage: hotel.image,
+      guests: guests,
+      checkIn: checkIn,
+      checkOut: checkOut
+    };
 
-if (!isOpen) return null;
+    try {
+      // const res = await axios.post("http://localhost:3001/hotelbooking", bookingData);
 
-return ( <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50"> <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
- <div className="flex items-center justify-between p-6 border-b"> <h2 className="text-2xl font-bold text-gray-800">Complete Your Booking</h2> <button
-         onClick={onClose}
-         className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-       > <X className="w-6 h-6" /> </button> </div>
+      const res = await axios.post(
+        `${process.env.REACT_APP_Backend_URL}/hotelbooking`,
+        bookingData,
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+
+      if (res.status === 201 || res.status === 200) {
+        console.log("API Response:", res.data.booking);
+        toast.success("🎉 Hotel Booked successfully!", { position: "bottom-right" });
+      }
+    } catch (error) {
+      console.error("Booking failed:", error.response?.data || error.message);
+      toast.success("Booking failed. Please try again.", { position: "bottom-right" });
+    }
+  };
+
+
+
+  const handleInputChange = (field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  if (!isOpen) return null;
+
+  return (<div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50"> <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+    <div className="flex items-center justify-between p-6 border-b"> <h2 className="text-2xl font-bold text-gray-800">Complete Your Booking</h2> <button
+      onClick={onClose}
+      className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+    > <X className="w-6 h-6" /> </button> </div>
 
     <div className="grid md:grid-cols-2 gap-6 p-6">
       <div>
@@ -100,7 +122,7 @@ return ( <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-c
                 />
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 mt-3 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Email *
@@ -127,7 +149,7 @@ return ( <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-c
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-1 mt-3">
                 Special Requests
               </label>
               <textarea
@@ -139,70 +161,9 @@ return ( <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-c
               />
             </div>
           </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-              <CreditCard className="w-5 h-5" />
-              Payment Information
-            </h3>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Cardholder Name *
-              </label>
-              <input
-                type="text"
-                required
-                value={formData.cardName}
-                onChange={(e) => handleInputChange('cardName', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Card Number *
-              </label>
-              <input
-                type="text"
-                required
-                placeholder="1234 5678 9012 3456"
-                value={formData.cardNumber}
-                onChange={(e) => handleInputChange('cardNumber', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Expiry Date *
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="MM/YY"
-                  value={formData.expiryDate}
-                  onChange={(e) => handleInputChange('expiryDate', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  CVV *
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="123"
-                  value={formData.cvv}
-                  onChange={(e) => handleInputChange('cvv', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-            </div>
-          </div>
-
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="w-full bg-[#fdbd33] text-white  hover:bg-[#fcb000] transition duration-300 py-4 rounded-lg font-semibold text-lg  shadow-lg hover:shadow-xl"
           >
             Confirm Booking - ₹ {total.toFixed(2)}
           </button>
@@ -212,7 +173,7 @@ return ( <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-c
       <div>
         <div className="bg-gray-50 rounded-xl p-6 sticky top-6">
           <h3 className="text-lg font-semibold mb-4">Booking Summary</h3>
-          
+
           <div className="mb-6">
             <img
               src={hotel.image}
@@ -259,8 +220,8 @@ return ( <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-c
       </div>
     </div>
   </div>
-</div>
+  </div>
 
 
-);
+  );
 }

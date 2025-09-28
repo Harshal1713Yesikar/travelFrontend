@@ -70,7 +70,7 @@ export const hotels =[
   {
     id: '7',
        name: 'Radisson Blu ',
-    location: 'Indore,Madhya Pradesh',
+    location: 'Indore, Madhya Pradesh',
     price: 1500,
     rating: 4.9,
     reviews: 1876,
@@ -191,7 +191,7 @@ export const hotels =[
   {
     id: '17',
     name: 'Radisson Blu Marina',
-    location: 'Connaught Place, New Delhi, India',
+    location: 'Connaught Place, New Delhi',
     price: 980,
     rating: 4.4,
     reviews: 1205,
@@ -215,7 +215,7 @@ export const hotels =[
   {
     id: '19',
     name: 'JW Marriott Sahar',
-    location: 'Mumbai, India',
+    location: 'Mumbai, Maharashtra',
     price: 1400,
     rating: 4.8,
     reviews: 1980,

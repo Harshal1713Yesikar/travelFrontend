@@ -132,7 +132,7 @@ const MapView = () => {
   coordinates: { lat: 25.3176, lng: 82.9739 },
   rating: 4.5,
   image:
-    "https://lh3.googleusercontent.com/gpms-cs-s/AB8u6Ha1hDIAuYmymCg5q7CL1G4rJedZG0fL5Wjd5VVFbOvEgysdQrxGFuEq9Ub2D5N94w4RbWjztnAHDSId5vxiuLgYoccGyyz9yL-8CsorGAunlaccRbFe3S4zXQbluyLhlUxtCj4i=w442-h300-n-k-no",
+    "https://images.pexels.com/photos/8112519/pexels-photo-8112519.jpeg",
   description:
     "One of the world's oldest living cities, Varanasi is the spiritual heart of India, known for its ghats and Ganga aarti.",
   highlights: ["Dashashwamedh Ghat", "Kashi Vishwanath Temple", "Ganga Aarti", "Sarnath"],
@@ -171,7 +171,7 @@ const MapView = () => {
   coordinates: { lat: 31.1048, lng: 77.1734 },
   rating: 4.5,
   image:
-    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npWLYGhXiusYc4yZZ3nSrnhDsWUD0VinsMC_UTizm9dPD2ZUGKWqXTAfoOpIQHVCj1E7ADph_xEGEGzaK88yfup9y0lNR_rTet9rgfZoguzQ9KiLi4h-qOdmOC1aG3GYfJD6w8=s294-w294-h220-n-k-no",
+    "https://images.pexels.com/photos/944363/pexels-photo-944363.jpeg",
   description:
     "The capital of Himachal Pradesh, Shimla is known for its colonial architecture, pleasant climate, and scenic hills.",
   highlights: ["Mall Road", "Jakhu Temple", "Christ Church", "Kufri"],

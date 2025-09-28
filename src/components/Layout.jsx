@@ -62,7 +62,7 @@ const Layout = ({ children }) => {
                 to="/booking"
                 className="text-gray-700 hover:text-orange-500 transition-transform duration-300 font-medium"
               >
-                Bookings
+                Hotels
               </Link>
               <Link
                 to="/contactUs"
@@ -77,7 +77,7 @@ const Layout = ({ children }) => {
               >
                 Login
               </button>
-              
+
 
               <Link
                 to="/Admin"
@@ -110,13 +110,13 @@ const Layout = ({ children }) => {
             >
               Home
             </Link>
-                  <Link
-                to="/hotelList"
-                className="text-gray-700 hover:text-orange-500 transition-transform duration-300 font-medium"
-              >
-                Destination
+            <Link
+              to="/hotelList"
+              className="text-gray-700 hover:text-orange-500 transition-transform duration-300 font-medium"
+            >
+              Destination
 
-              </Link>
+            </Link>
             <Link
               to="/flight"
               className="block py-2 text-gray-700 hover:text-orange-500"
@@ -129,7 +129,7 @@ const Layout = ({ children }) => {
               className="block py-2 text-gray-700 hover:text-orange-500"
               onClick={() => setIsOpen(false)}
             >
-              Bookings
+              Hotels
             </Link>
             <Link
               to="/contactUs"

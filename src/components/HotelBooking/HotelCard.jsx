@@ -25,7 +25,7 @@ export function HotelCard({ hotel, onBook, checkIn, checkOut, guests }) {
       src={hotel.image}
       alt={hotel.name}
       className="w-full h-64 md:h-full object-cover"
-    /> <button className="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-colors"> <Heart className="w-5 h-5 text-gray-600 hover:text-red-500" /> </button>
+    /> 
       {hotel.featured && (<div className="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">
         Featured </div>
       )} </div>
@@ -84,7 +84,7 @@ export function HotelCard({ hotel, onBook, checkIn, checkOut, guests }) {
 
         <button
           onClick={onBook}
-          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
+          className="bg-[#fdbd33] text-white rounded-lg hover:bg-[#fcb000] transition duration-300  px-6 py-3 font-semibold   shadow-md hover:shadow-lg transform hover:scale-105"
         >
           Book Now
         </button>

@@ -13,7 +13,7 @@ const FlightSearch = () => {
     departureCity: '',
     arrivalCity: '',
     departureDate: '',
-    passengers: 1,
+    passengers: "",
     tripType: 'one-way',
     returnDate: '',
   });
@@ -67,13 +67,10 @@ const FlightSearch = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === 'passengers' ? parseInt(value) || 1: value,
+      [name]: value,
     }));
-
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
   };
+
 
   const handleTripTypeChange = (type) => {
     setTripType(type);
@@ -111,54 +108,54 @@ const FlightSearch = () => {
     }
 
 
-try {
-  const res = await axios.post(
-    `${process.env.REACT_APP_Backend_URL}/flight`,
-    {
-      city: formData.departureCity,
-      arrivalCity: formData.arrivalCity,
-      date: formData.departureDate,
-      number: formData.passengers.toString(),
-      tripType: tripType,
-      returnDate: formData.returnDate,
-    },
-    {
-      headers: { "Content-Type": "application/json" }
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_Backend_URL}/flight`,
+        {
+          city: formData.departureCity,
+          arrivalCity: formData.arrivalCity,
+          date: formData.departureDate,
+          number: formData.passengers.toString(),
+          tripType: tripType,
+          returnDate: formData.returnDate,
+        },
+        {
+          headers: { "Content-Type": "application/json" }
+        }
+      );
+
+      toast.success("Flight search completed successfully!", {
+        position: "bottom-right",
+        duration: 4000,
+      });
+
+      setFormData({
+        departureCity: "",
+        arrivalCity: "",
+        departureDate: "",
+        passengers: 1,
+        tripType: "one-way",
+        returnDate: "",
+      });
+      setTripType("one-way");
+
+    } catch (error) {
+      const errorMessage =
+        error.response?.data?.message ||
+        (error instanceof Error ? error.message : "Something went wrong!");
+
+      toast.error(errorMessage, {
+        position: "top-right",
+        duration: 4000,
+      });
+    } finally {
+      setIsLoading(false);
     }
-  );
-
-  toast.success("Flight search completed successfully!", {
-    position: "bottom-right",
-    duration: 4000,
-  });
-
-  setFormData({
-    departureCity: "",
-    arrivalCity: "",
-    departureDate: "",
- passengers: 1,
-    tripType: "one-way",
-    returnDate: "",
-  });
-  setTripType("one-way");
-
-} catch (error) {
-  const errorMessage =
-    error.response?.data?.message ||
-    (error instanceof Error ? error.message : "Something went wrong!");
-    
-  toast.error(errorMessage, {
-    position: "top-right",
-    duration: 4000,
-  });
-} finally {
-  setIsLoading(false);
-}
 
   };
 
   return (
-  <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           <div className="order-2 lg:order-1 flex justify-center">
@@ -182,7 +179,7 @@ try {
               </span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Discover amazing destinations, book flights at the best prices, and create unforgettable memories. 
+              Discover amazing destinations, book flights at the best prices, and create unforgettable memories.
               Your perfect trip is just a search away.
             </p>
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
@@ -216,22 +213,20 @@ try {
                 <button
                   type="button"
                   onClick={() => handleTripTypeChange('one-way')}
-                  className={`px-6 py-2 rounded-md font-medium transition-all duration-200 ${
-                    tripType === 'one-way'
-                      ? 'bg-white text-orange-600 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-800'
-                  }`}
+                  className={`px-6 py-2 rounded-md font-medium transition-all duration-200 ${tripType === 'one-way'
+                    ? 'bg-white text-orange-600 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-800'
+                    }`}
                 >
                   One Way
                 </button>
                 <button
                   type="button"
                   onClick={() => handleTripTypeChange('round-trip')}
-                  className={`px-6 py-2 rounded-md font-medium transition-all duration-200 ${
-                    tripType === 'round-trip'
-                      ? 'bg-white text-orange-600 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-800'
-                  }`}
+                  className={`px-6 py-2 rounded-md font-medium transition-all duration-200 ${tripType === 'round-trip'
+                    ? 'bg-white text-orange-600 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-800'
+                    }`}
                 >
                   Round Trip
                 </button>
@@ -251,9 +246,8 @@ try {
                       value={formData.departureCity}
                       onChange={handleInputChange}
                       placeholder="Enter departure city"
-                      className={`w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${
-                        errors.departureCity ? 'border-red-500 ring-1 ring-red-500' : ''
-                      }`}
+                      className={`w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${errors.departureCity ? 'border-red-500 ring-1 ring-red-500' : ''
+                        }`}
                       required
                     />
                   </div>
@@ -261,7 +255,7 @@ try {
                     <p className="text-sm text-red-600 mt-1">{errors.departureCity}</p>
                   )}
                 </div>
-                
+
                 <button
                   type="button"
                   onClick={swapCities}
@@ -285,9 +279,8 @@ try {
                       value={formData.arrivalCity}
                       onChange={handleInputChange}
                       placeholder="Enter destination city"
-                      className={`w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${
-                        errors.arrivalCity ? 'border-red-500 ring-1 ring-red-500' : ''
-                      }`}
+                      className={`w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${errors.arrivalCity ? 'border-red-500 ring-1 ring-red-500' : ''
+                        }`}
                       required
                     />
                   </div>
@@ -310,9 +303,8 @@ try {
                       value={formData.departureDate}
                       onChange={handleInputChange}
                       min={getTomorrowDate()}
-                      className={`w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${
-                        errors.departureDate ? 'border-red-500 ring-1 ring-red-500' : ''
-                      }`}
+                      className={`w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${errors.departureDate ? 'border-red-500 ring-1 ring-red-500' : ''
+                        }`}
                       required
                     />
                   </div>
@@ -320,7 +312,7 @@ try {
                     <p className="text-sm text-red-600 mt-1">{errors.departureDate}</p>
                   )}
                 </div>
-                
+
                 {tripType === 'round-trip' && (
                   <div className="space-y-2">
                     <label className="block text-sm font-medium text-gray-700">Return Date</label>
@@ -334,9 +326,8 @@ try {
                         value={formData.returnDate}
                         onChange={handleInputChange}
                         min={formData.departureDate || getTomorrowDate()}
-                        className={`w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${
-                          errors.returnDate ? 'border-red-500 ring-1 ring-red-500' : ''
-                        }`}
+                        className={`w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${errors.returnDate ? 'border-red-500 ring-1 ring-red-500' : ''
+                          }`}
                         required
                       />
                     </div>
@@ -349,22 +340,28 @@ try {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">Passengers</label>
+
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <Users className="w-5 h-5 text-gray-400" />
-                    </div>
-                    <input
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <Users className="inline w-4 h-4 mr-1" />
+                      Passengers
+                    </label>
+                    <select
                       name="passengers"
-                      type="number"
-                      value={formData.passengers.toString()}
+                      value={formData.passengers || 1}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 ${
-                        errors.passengers ? 'border-red-500 ring-1 ring-red-500' : ''
-                      }`}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-black focus:ring-orange-500 focus:border-transparent transition-all"
                       required
-                    />
+                    >
+                      {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                        <option  key={num} value={num}>
+                          {num} {num === 1 ? "Passenger" : "Passengers"}
+                        </option>
+                      ))}
+                    </select>
+
                   </div>
+
                   {errors.passengers && (
                     <p className="text-sm text-red-600 mt-1">{errors.passengers}</p>
                   )}
@@ -393,7 +390,7 @@ try {
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Why Choose Jaddoo?</h2>
             <p className="text-gray-600 text-lg">Everything you need for the perfect trip</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -402,7 +399,7 @@ try {
               <h3 className="text-xl font-bold text-gray-800 mb-2">Easy Search</h3>
               <p className="text-gray-600">Compare flights from hundreds of airlines in seconds</p>
             </div>
-            
+
             <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">💳</span>
@@ -410,7 +407,7 @@ try {
               <h3 className="text-xl font-bold text-gray-800 mb-2">Best Prices</h3>
               <p className="text-gray-600">Get the lowest fares with our price guarantee</p>
             </div>
-            
+
             <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🛡️</span>
@@ -427,136 +424,136 @@ try {
 
 
       <div className="bg-gray-100 py-16 px-6 mt-16 sm:px-12 lg:px-20">
-            <div className="flex flex-col md:flex-row justify-center gap-2 md:gap-16 mt-12 animate-on-scroll">
-              <div className="text-center md:text-left">
-                <p className="font-poppins font-semibold text-4xl">Jaddoo.</p>
-              <p className="w-80 md:w-68 text-[#5E6282] mt-7 font-semibold">
+        <div className="flex flex-col md:flex-row justify-center gap-2 md:gap-16 mt-12 animate-on-scroll">
+          <div className="text-center md:text-left">
+            <p className="font-poppins font-semibold text-4xl">Jaddoo.</p>
+            <p className="w-80 md:w-68 text-[#5E6282] mt-7 font-semibold">
               Your trusted travel companion for discovering amazing destinations,
               booking hotels, and creating unforgettable memories around the world.
             </p>
-              </div>
-    
-    
-    
-              <div>
-                <p className="font-bold text-2xl">Company</p>
-                <div className="mt-7 space-y-2">
-                  <p className="text-slate-600 font-bold font-poppins cursor-pointer hover:text-orange-500 transition-colors">
-                    <Link to="/hotelList">
-                      Hotel
-                    </Link>
-                  </p>
-                  <p className="text-slate-600 font-bold font-poppins cursor-pointer hover:text-orange-500 transition-colors">
-    
-                    <Link to="/flight">
-                      Flights
-                    </Link>
-                  </p>
-                  <p className="text-slate-600 font-bold font-poppins cursor-pointer hover:text-orange-500 transition-colors">
-                    <Link to="/booking">
-                      Bookings
-                    </Link>
-                  </p>
-                </div>
-              </div>
-    
-    
-              <div>
-                <p className="font-bold text-2xl">Contact</p>
-                <div className="mt-7 space-y-2">
-                  <p className="text-slate-600 font-bold font-poppins cursor-pointer hover:text-orange-500 transition-colors">
-                    <Link to="/sighup">
-                      Sign up
-                    </Link>
-                  </p>
-                  <p className="text-slate-600 font-bold font-poppins cursor-pointer hover:text-orange-500 transition-colors">
-                    <Link to="/login">
-                      Login
-                    </Link>
-    
-                  </p>
-                  <p className="text-slate-600 font-bold font-poppins cursor-pointer hover:text-orange-500 transition-colors">
-                    <Link to="/contactUs">
-                      ContactUs
-                    </Link>
-    
-                  </p>
-                </div>
-              </div>
-    
-    
-              <div>
-                <p className="font-bold text-2xl">Support</p>
-                <div className="mt-7 space-y-2">
-                  <p className="text-slate-600 font-bold font-poppins  hover:text-orange-500 transition-colors flex justify-center w-36  ">
-                    <img src="https://cdn-icons-png.flaticon.com/128/10542/10542947.png" alt="" className="w-5 h-5 mr-2 " />+123-456-7890
-    
-                  </p>
-                  <p className="text-slate-600 font-bold font-poppins  hover:text-orange-500 transition-colors flex justify-center w-36  ">
-                    <img src="https://cdn-icons-png.flaticon.com/128/1944/1944502.png" alt="" className="w-5 h-5 mr-2 " />+123-456-7890
-    
-                  </p>
-                  <p className="text-slate-600 font-bold font-poppins  hover:text-orange-500 transition-colors flex justify-center w-36  ">
-                    <img src="https://cdn-icons-png.flaticon.com/128/546/546394.png" alt="" className="w-5 h-5 mr-1 " /> xyz@gmail.com
-    
-                  </p>
-                </div>
-              </div>
-    
-    
-              <div className="text-center md:text-left">
-                <div className="flex justify-center md:justify-start space-x-5 ml-4">
-                  <a href="https://www.facebook.com/groups/travelingtheworlds/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-    
-    
-                    <img
-                      className="hover:translate-y-[-5px] transition-transform duration-300 rounded-full cursor-pointer h-9 w-10"
-                      src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png"
-                      alt="Social Icon 1"
-                    />
-                  </a>
-                  <a
-                    href="https://www.instagram.com/bestintravel/?hl=en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      className="hover:translate-y-[-5px] transition-transform duration-300 rounded-full cursor-pointer h-10 w-10"
-                      src="https://cdn-icons-png.flaticon.com/128/15713/15713420.png"
-                      alt="Instagram"
-                    />
-                  </a>
-    
-                  <a
-                    href="https://x.com/traweltheworld"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      className="hover:translate-y-[-5px] transition-transform duration-300 rounded-full cursor-pointer h-10 w-10"
-                      src="https://cdn-icons-png.flaticon.com/128/3670/3670127.png"
-                      alt="Social Icon 3"
-                    />
-                  </a>
-                </div>
-                <p className="mt-4 text-slate-600 font-bold font-poppins text-center mr-4">Discover our app</p>
-                <div className="flex justify-center md:justify-start items-center gap-2 mt-4">
-                  <img src="/Image/Google Play.png" alt="Google Play" />
-                  <img src="/Image/Play Store.png" alt="Play Store" />
-                </div>
-              </div>
-            </div>
-    
-            <div className="mt-16 flex justify-center border-t pt-6">
-              <p className="text-slate-600 font-serif font-bold">
-                © 2025 @jadoo.com All rights reserved.
+          </div>
+
+
+
+          <div>
+            <p className="font-bold text-2xl">Company</p>
+            <div className="mt-7 space-y-2">
+              <p className="text-slate-600 font-bold font-poppins cursor-pointer hover:text-orange-500 transition-colors">
+                <Link to="/hotelList">
+                  Hotel
+                </Link>
+              </p>
+              <p className="text-slate-600 font-bold font-poppins cursor-pointer hover:text-orange-500 transition-colors">
+
+                <Link to="/flight">
+                  Flights
+                </Link>
+              </p>
+              <p className="text-slate-600 font-bold font-poppins cursor-pointer hover:text-orange-500 transition-colors">
+                <Link to="/booking">
+                  Bookings
+                </Link>
               </p>
             </div>
           </div>
-    
+
+
+          <div>
+            <p className="font-bold text-2xl">Contact</p>
+            <div className="mt-7 space-y-2">
+              <p className="text-slate-600 font-bold font-poppins cursor-pointer hover:text-orange-500 transition-colors">
+                <Link to="/sighup">
+                  Sign up
+                </Link>
+              </p>
+              <p className="text-slate-600 font-bold font-poppins cursor-pointer hover:text-orange-500 transition-colors">
+                <Link to="/login">
+                  Login
+                </Link>
+
+              </p>
+              <p className="text-slate-600 font-bold font-poppins cursor-pointer hover:text-orange-500 transition-colors">
+                <Link to="/contactUs">
+                  ContactUs
+                </Link>
+
+              </p>
+            </div>
+          </div>
+
+
+          <div>
+            <p className="font-bold text-2xl">Support</p>
+            <div className="mt-7 space-y-2">
+              <p className="text-slate-600 font-bold font-poppins  hover:text-orange-500 transition-colors flex justify-center w-36  ">
+                <img src="https://cdn-icons-png.flaticon.com/128/10542/10542947.png" alt="" className="w-5 h-5 mr-2 " />+123-456-7890
+
+              </p>
+              <p className="text-slate-600 font-bold font-poppins  hover:text-orange-500 transition-colors flex justify-center w-36  ">
+                <img src="https://cdn-icons-png.flaticon.com/128/1944/1944502.png" alt="" className="w-5 h-5 mr-2 " />+123-456-7890
+
+              </p>
+              <p className="text-slate-600 font-bold font-poppins  hover:text-orange-500 transition-colors flex justify-center w-36  ">
+                <img src="https://cdn-icons-png.flaticon.com/128/546/546394.png" alt="" className="w-5 h-5 mr-1 " /> xyz@gmail.com
+
+              </p>
+            </div>
+          </div>
+
+
+          <div className="text-center md:text-left">
+            <div className="flex justify-center md:justify-start space-x-5 ml-4">
+              <a href="https://www.facebook.com/groups/travelingtheworlds/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+
+
+                <img
+                  className="hover:translate-y-[-5px] transition-transform duration-300 rounded-full cursor-pointer h-9 w-10"
+                  src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png"
+                  alt="Social Icon 1"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/bestintravel/?hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  className="hover:translate-y-[-5px] transition-transform duration-300 rounded-full cursor-pointer h-10 w-10"
+                  src="https://cdn-icons-png.flaticon.com/128/15713/15713420.png"
+                  alt="Instagram"
+                />
+              </a>
+
+              <a
+                href="https://x.com/traweltheworld"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  className="hover:translate-y-[-5px] transition-transform duration-300 rounded-full cursor-pointer h-10 w-10"
+                  src="https://cdn-icons-png.flaticon.com/128/3670/3670127.png"
+                  alt="Social Icon 3"
+                />
+              </a>
+            </div>
+            <p className="mt-4 text-slate-600 font-bold font-poppins text-center mr-4">Discover our app</p>
+            <div className="flex justify-center md:justify-start items-center gap-2 mt-4">
+              <img src="/Image/Google Play.png" alt="Google Play" />
+              <img src="/Image/Play Store.png" alt="Play Store" />
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16 flex justify-center border-t pt-6">
+          <p className="text-slate-600 font-serif font-bold">
+            © 2025 @jadoo.com All rights reserved.
+          </p>
+        </div>
+      </div>
+
     </div>
   );
 };

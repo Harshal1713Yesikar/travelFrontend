@@ -42,7 +42,7 @@ const HotelList = () => {
       id: '4',
       name: 'Rajasthan Royal Tour',
       location: 'Rajasthan, India',
-      image: 'https://images.pexels.com/photos/3243090/pexels-photo-3243090.jpeg',
+      image: 'https://images.pexels.com/photos/3581369/pexels-photo-3581369.jpeg',
       price: 15000,
       rating: 4.9,
       description: 'Discover the royal heritage of Rajasthan with guided tours of magnificent palaces and forts.',

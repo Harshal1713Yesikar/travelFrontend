@@ -4,25 +4,22 @@ import { Search, MapPin, Calendar, Users } from 'lucide-react';
 const indianCities = [
   "Indore, Madhya Pradesh",
   "Pune, Maharastra",
-   'New Delhi, Delhi',
-   'Chennai, Tamil Nadu',
-   'Bangalore, Karnataka',
-   'Kolkata, West Bengal',
-   'Jaipur, Rajasthan',
-   'Indore, Madhya Pradesh',
-   'Hyderabad, Telangana',
-   'Mumbai, Maharashtra',
-   'Kerala, India',
-    'New Delhi, India',
-    'Hyderabad, India',
-    'Chennai, India',
-    'Agra, India',
-    'Jodhpur, India',
-    'Kolkata, India',
-    'Connaught Place, New Delhi, India',
-    'Mumbai, India',
-    'Goa, India',
-  
+  'Chennai, Tamil Nadu',
+  'Bangalore, Karnataka',
+  'Kolkata, West Bengal',
+  'Jaipur, Rajasthan',
+  'Hyderabad, Telangana',
+  'Mumbai, Maharashtra',
+  'Kerala, India',
+  'New Delhi, India',
+  'Hyderabad, India',
+  'Chennai, India',
+  'Agra, India',
+  'Jodhpur, India',
+  'Kolkata, India',
+  'Connaught Place, New Delhi, India',
+  'Goa, India',
+
 ];
 
 export function SearchBar({ filters, onFiltersChange }) {
@@ -43,6 +40,12 @@ export function SearchBar({ filters, onFiltersChange }) {
   const handleCitySelect = (city) => {
     onFiltersChange({ ...filters, destination: city });
     setShowSuggestions(false);
+  };
+
+    const getTomorrowDate = () => {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return tomorrow.toISOString().split('T')[0];
   };
 
   return (
@@ -99,6 +102,7 @@ export function SearchBar({ filters, onFiltersChange }) {
           <input
             type="date"
             value={filters.checkIn}
+              min={getTomorrowDate()}
             onChange={(e) => handleInputChange('checkIn', e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-black focus:ring-blue-500 focus:border-transparent transition-all"
           />
@@ -111,6 +115,7 @@ export function SearchBar({ filters, onFiltersChange }) {
           </label>
           <input
             type="date"
+         min={getTomorrowDate()}    
             value={filters.checkOut}
             onChange={(e) => handleInputChange('checkOut', e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-black focus:ring-blue-500 focus:border-transparent transition-all"
@@ -137,13 +142,13 @@ export function SearchBar({ filters, onFiltersChange }) {
       </div>
 
       <div className="mt-6 flex justify-center">
-        <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-12 py-4 rounded-xl font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-2">
+        <button className=" text-white px-12 py-4 rounded-xl font-semibold text-lg bg-[#fdbd33]  hover:bg-[#fcb000] transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-2">
           <Search className="w-5 h-5" />
           Search Hotels
         </button>
       </div>
 
-      
+
     </div>
   );
 }

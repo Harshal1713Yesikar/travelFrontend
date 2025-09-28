@@ -50,16 +50,16 @@ const handleAdd = async () => {
   };
 
   try {
-    const res = await axios.post("http://localhost:3001/api/bookings", bookingData);
-//  const res = await axios.post(
-//     `${process.env.REACT_APP_Backend_URL}/api/bookings`,
-//     bookingData, 
-//     {
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     }
-//   );
+    // const res = await axios.post("http://localhost:3001/api/bookings", bookingData);
+ const res = await axios.post(
+    `${process.env.REACT_APP_Backend_URL}/api/bookings`,
+    bookingData, 
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
     console.log("Saved:", res.data);
           toast.success("🎉 Destination Add successfully!", { position: "bottom-right" });
     
@@ -124,7 +124,7 @@ const handleAdd = async () => {
         <div className="flex space-x-3">
           <button
             onClick={() => setIsOpen(true)}
-            className="flex-1 px-4 py-2 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white rounded-lg transition-all duration-200 transform hover:scale-105 font-medium"
+            className="flex-1 px-4 py-2 bg-gradient-to-r bg-[#fdbd33] text-white rounded-lg hover:bg-[#fcb000] transition duration-300 transform hover:scale-105 font-medium"
           >
             {t("book.now")}
           </button>
