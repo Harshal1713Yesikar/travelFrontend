@@ -4,7 +4,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Contect from "./pages/Contact"
 import SighupPage from "./pages/SighUpPage";
-import Booking from "./pages/Booking";
+import Booking, { HotelBooking } from "./pages/HotelBooking";
 import HotelList from "./pages/HotelList";
 import FlightSearch from "./pages/Flight";
 import Login from "./pages/Login";
@@ -27,7 +27,7 @@ const App = () => {
               <Route path="/hotelList" element={<HotelList />} />
               <Route path="/Flight" element={<FlightSearch />} />
               <Route  path="/contactUs" element={<Contect/>}/>
-              <Route path="/booking" element={<Booking />} />
+              <Route path="/booking" element={<HotelBooking/>} />
               <Route path="/login" element={<Login />}/>
               <Route path="/sighup" element={<SighupPage />} />
               <Route path="/admin" element={<Admin/>}/>

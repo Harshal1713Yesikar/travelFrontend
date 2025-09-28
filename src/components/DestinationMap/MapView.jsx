@@ -17,7 +17,7 @@ const MapView = () => {
       coordinates: { lat: 29.3919, lng: 79.4542 },
       rating: 4.5,
       image:
-        "https://images.pexels.com/photos/3593865/pexels-photo-3593865.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/9a/38/38/the-lake-from-the-top.jpg?w=600&h=600&s=1",
       description:
         "A beautiful hill station known for its pristine lakes and scenic beauty. Perfect for a peaceful retreat in the mountains.",
       highlights: ["Naini Lake", "Snow View Point", "Tiffin Top", "Mall Road"],
@@ -61,7 +61,7 @@ const MapView = () => {
       coordinates: { lat: 15.2993, lng: 74.124 },
       rating: 4.4,
       image:
-        "https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/18/3e/36/95/baga-sea-beach.jpg?w=800&h=-1&s=1",
       description:
         "Sun, sand, and sea - Goa offers beautiful beaches, vibrant nightlife, and Portuguese colonial charm.",
       highlights: [
@@ -105,7 +105,7 @@ const MapView = () => {
   coordinates: { lat: 30.0869, lng: 78.2676 },
   rating: 4.7,
   image:
-    "https://images.pexels.com/photos/1660990/pexels-photo-1660990.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/7b/b8/84/anandsphotography1-bmqcshjbk.jpg?w=1000&h=800&s=1",
   description:
     "Yoga capital of the world, Rishikesh offers a mix of spirituality, yoga, and adventure sports like white-water rafting.",
   highlights: ["Laxman Jhula", "Triveni Ghat", "River Rafting", "Beatles Ashram"],
@@ -145,7 +145,7 @@ const MapView = () => {
   coordinates: { lat: 12.2958, lng: 76.6394 },
   rating: 4.6,
   image:
-    "https://images.pexels.com/photos/450441/pexels-photo-450441.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/aa/dd/9e/chamundeswari-temple.jpg?w=1200&h=800&s=1",
   description:
     "Known as the City of Palaces, Mysore is famous for Mysore Palace, silk sarees, sandalwood, and the grand Dussehra festival.",
   highlights: ["Mysore Palace", "Chamundi Hill", "Brindavan Gardens", "St. Philomena’s Church"],
@@ -171,7 +171,7 @@ const MapView = () => {
   coordinates: { lat: 31.1048, lng: 77.1734 },
   rating: 4.5,
   image:
-    "https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npWLYGhXiusYc4yZZ3nSrnhDsWUD0VinsMC_UTizm9dPD2ZUGKWqXTAfoOpIQHVCj1E7ADph_xEGEGzaK88yfup9y0lNR_rTet9rgfZoguzQ9KiLi4h-qOdmOC1aG3GYfJD6w8=s294-w294-h220-n-k-no",
   description:
     "The capital of Himachal Pradesh, Shimla is known for its colonial architecture, pleasant climate, and scenic hills.",
   highlights: ["Mall Road", "Jakhu Temple", "Christ Church", "Kufri"],
@@ -210,11 +210,24 @@ const MapView = () => {
   coordinates: { lat: 8.0883, lng: 77.5385 },
   rating: 4.4,
   image:
-    "https://images.pexels.com/photos/208745/pexels-photo-208745.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/b5/2a/fb/thiruvalluvar-statue.jpg?w=1200&h=-1&s=1",
   description:
     "Located at the southern tip of India, Kanyakumari is famous for its sunrise and sunset views over the ocean.",
   highlights: ["Vivekananda Rock Memorial", "Thiruvalluvar Statue", "Kanyakumari Beach", "Sunset Point"],
   bestTime: "October to March",
+},
+
+{
+  id: "16",
+  name: "Kailasagiri, Visakhapatnam",
+  type: "Coastal Town",
+  coordinates: { lat: 8.0883, lng: 77.5385 },
+  image:
+    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/c3/86/31/kailashigiri18-largejpg.jpg?w=1200&h=-1&s=1",
+  description:
+   "he best thing in this place is, we get to see the beautiful areal view of the beaches, sea and vizag city. These is a observatory point in this park",
+  highlights: ["Vivekananda Rock Memorial", "Thiruvalluvar Statue", "Kanyakumari Beach", "Sunset Point"],
+  bestTime: "June to March",
 },
 
   ];
@@ -320,7 +333,7 @@ const MapView = () => {
       </div>
     </div>
 
-    <div className="w-full lg:w-96 p-8  border-t lg:border-t-0 lg:border-l border-gray-100 bg-gradient-to-b from-gray-50 to-white">
+    <div className="w-full lg:w-96 p-8 mt-20 border-t lg:border-t-0 lg:border-l border-gray-100 bg-gradient-to-b from-gray-50 to-white">
       {selectedLocation ? (
         <div>
           <img
@@ -344,7 +357,7 @@ const MapView = () => {
             onClick={() => setShowDetails(true)}
             className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg text-sm sm:text-base"
           >
-            <Info className="h-4 w-4 inline-block mr-2" />
+            <Info className="h-4 w-4 inline-block mr-2  mb-1" />
             View Details
           </button>
         </div>
