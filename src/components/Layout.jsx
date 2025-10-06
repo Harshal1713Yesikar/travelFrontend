@@ -79,12 +79,12 @@ const Layout = ({ children }) => {
               </button>
 
 
-              <Link
+              {/* <Link
                 to="/Admin"
                 className=" ml-16 w-12 h-12 border border-[#FFE5BB] rounded-full text-black font-medium text-base cursor-pointer hover:bg-[#FFDDAA] flex items-center justify-center gap-2"
               >
                 <UserRoundCheck size={28} strokeWidth={2.25} absoluteStrokeWidth className="ml-1" />
-              </Link>
+              </Link> */}
 
             </div>
 

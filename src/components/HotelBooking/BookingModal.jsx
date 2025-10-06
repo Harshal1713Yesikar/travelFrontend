@@ -39,6 +39,8 @@ export function BookingModal({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
+
     const bookingData = {
       firstname: formData.firstName,
       lastname: formData.lastName,
@@ -55,22 +57,22 @@ export function BookingModal({
     };
 
     try {
-      // const res = await axios.post("http://localhost:3001/hotelbooking", bookingData);
+      const res = await axios.post("http://localhost:3001/hotelbooking", bookingData);
 
-      const res = await axios.post(
-        `${process.env.REACT_APP_Backend_URL}/hotelbooking`,
-        bookingData,
-        { headers: { "Content-Type": "application/json" } }
-      );
+      // const res = await axios.post(
+      //   "https://travelbackend-4ufh.onrender.com/hotelbooking",
+      //   bookingData,
+      //   { headers: { "Content-Type": "application/json" } }
+      // );
 
-
+      console.log("Booking Success:", res.data);
       if (res.status === 201 || res.status === 200) {
         console.log("API Response:", res.data.booking);
         toast.success("🎉 Hotel Booked successfully!", { position: "bottom-right" });
       }
     } catch (error) {
       console.error("Booking failed:", error.response?.data || error.message);
-      toast.success("Booking failed. Please try again.", { position: "bottom-right" });
+      toast.error("Booking failed. Please try again.", { position: "bottom-right" });
     }
   };
 
