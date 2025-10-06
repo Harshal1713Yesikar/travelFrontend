@@ -149,12 +149,12 @@ const Layout = ({ children }) => {
               Login
             </button>
 
-            <Link
+            {/* <Link
               to="/Admin"
               className=" h-12 w-12 border border-[#FFE5BB] rounded-full text-black font-medium text-base cursor-pointer hover:bg-[#FFDDAA] flex justify-center items-center gap-2"
             >
               <UserRoundCheck size={28} strokeWidth={2.25} absoluteStrokeWidth className="ml-1" />
-            </Link>
+            </Link> */}
           </div>
         )}
       </nav>
