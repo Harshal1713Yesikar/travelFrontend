@@ -106,7 +106,7 @@ const HotelList = () => {
       <section className="py-16 px-4 sm:px-6 lg:px-8  ">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold dark:text-black mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold dark:text-black mb-4  font-inika">
               Featured Destinations
             </h2>
             <p className="text-xl text-gray-600  max-w-3xl mx-auto">
@@ -120,21 +120,21 @@ const HotelList = () => {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          {/* <div className="text-center mt-12">
             <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white rounded-lg transition-all duration-200 transform hover:scale-105 font-medium">
               View All Destinations
             </button>
-          </div>
+          </div> */}
 
         </div>
 
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white ">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 ">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900  font-inika ">
                 Explore Destinations
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mt-3 mx-auto">
+              <p className="text-xl text-gray-600  max-w-3xl mt-3 mx-auto">
                 Discover hotels, attractions, and restaurants on our interactive map
               </p>
             </div>

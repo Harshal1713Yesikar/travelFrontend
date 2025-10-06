@@ -69,7 +69,7 @@ const Login = () => {
       <div className="flex justify-center  items-center mt-32 animate-on-scroll">
         <div className="p-8 rounded-lg shadow max-w-md w-full">
           <div className="flex justify-center">
-            <p className="text-3xl font-bold text-gray-800">
+            <p className="text-3xl font-bold text-gray-800 ">
               Jad
               <span className="text-orange-500 border-2 border-orange-500 rounded px-1">oo</span>
             </p>

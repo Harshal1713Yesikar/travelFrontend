@@ -172,7 +172,7 @@ const FlightSearch = () => {
           </div>
 
           <div className="order-1 lg:order-2 text-center lg:text-left">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6  font-inika">
               Your Journey
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-500">
                 {' '}Starts Here
@@ -201,7 +201,7 @@ const FlightSearch = () => {
             <div className="text-center mb-8">
               <div className="flex items-center justify-center mb-4">
                 <Plane className="w-8 h-8 text-orange-500 mr-3" />
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+                <h1 className="text-3xl md:text-4xl font-bold text-gray-800  font-inika">
                   Find Your Perfect Flight
                 </h1>
               </div>
@@ -387,7 +387,7 @@ const FlightSearch = () => {
 
         <div className="mt-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Why Choose Jaddoo?</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4  font-inika">Why Choose Jaddoo?</h2>
             <p className="text-gray-600 text-lg">Everything you need for the perfect trip</p>
           </div>
 

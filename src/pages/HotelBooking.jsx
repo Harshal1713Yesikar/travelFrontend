@@ -80,7 +80,7 @@ export function HotelBooking() {
             <div className="text-center mb-8">
               
               
-              <h1 className="relative z-10 text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Find Your Perfect Stay</h1>
+              <h1 className="relative z-10 text-4xl md:text-6xl font-bold mb-4  font-inika  drop-shadow-lg">Find Your Perfect Stay</h1>
               <p className="relative z-10 text-xl text-blue-100 drop-shadow-md">Discover amazing hotels in India with the best prices</p>
             </div>
             <div className="relative z-10">
@@ -98,7 +98,7 @@ export function HotelBooking() {
             <div className="lg:w-3/4">
               <div className="flex justify-between items-center mb-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800">
+                  <h2 className="text-2xl font-bold text-gray-800  font-inika">
                     {filteredHotels.length} Hotels Found
                   </h2>
                   {filters.destination && (

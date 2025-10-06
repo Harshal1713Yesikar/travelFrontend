@@ -92,7 +92,7 @@ const MapView = () => {
   coordinates: { lat: 27.041, lng: 88.2663 },
   rating: 4.6,
   image:
-    "https://lh3.googleusercontent.com/gpms-cs-s/AB8u6HaUKKeNvO0DU-hYFbzJhXJnpJFTxLf9NZanA2KMq3DmpzFLpFMscKD76AgHSHDwrf9jUia2lHvmc9CBHRxdxAldZyg00dPlQfCfbDBkwKnT26yQ8NU9-P5Vk5Wd6aIjCSV6wX63=s294-w294-h220-n-k-no",
+    "https://images.pexels.com/photos/33237705/pexels-photo-33237705.jpeg",
   description:
     "Known as the 'Queen of the Hills', Darjeeling is famous for its tea gardens, Himalayan views, and the UNESCO toy train.",
   highlights: ["Tiger Hill", "Darjeeling Himalayan Railway", "Tea Plantations", "Batasia Loop"],

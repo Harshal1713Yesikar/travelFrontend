@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
             </div>
 
 
-            <div className="hidden md:flex space-x-10 items-center gap-9">
+            <div className="hidden md:flex space-x-10 items-center gap-5 mr-16">
               <Link
                 to="/"
                 className="text-gray-700 hover:text-orange-500 transition-transform duration-300 font-medium"
