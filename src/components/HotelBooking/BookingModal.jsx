@@ -83,14 +83,13 @@ export function BookingModal({
         hotelLocation: hotel.location,
         hotelImage: hotel.image,
       };
-     const res = await axios.post("http://localhost:3001/hotelbooking", bookingData);
+      const res = await axios.post("http://localhost:3001/hotelbooking", bookingData);
       // const res = await axios.post(
       //   `${process.env.REACT_APP_Backend_URL}/hotelbooking`,
       //   bookingData,
       //   { headers: { "Content-Type": "application/json" } }
       // );
 
-      console.log( res, "dvfdv")
       toast.success("Booking Successful 🎉", { position: "bottom-right" });
       setData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
     } catch (err) {
@@ -117,156 +116,153 @@ export function BookingModal({
 
   if (!isOpen) return null;
 
-  return(
-     <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-xl shadow-lg max-w-4xl w-full overflow-y-auto">
-        {/* Header */}
-        <div className="flex justify-between items-center p-4 border-b">
-          <h2 className="text-2xl font-bold">Complete Your Booking</h2>
-          <button onClick={onClose} className="hover:bg-gray-100 p-2 rounded-full">
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6 p-6">
-          {/* LEFT: Form */}
-          <div>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-gray-700 font-medium">First Name</label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={data.firstName}
-                    onChange={handleChange}
-                    className={`w-full border rounded-md p-2 focus:ring-2 focus:ring-[#fdbd33] outline-none ${
-                      errors.firstName ? "border-red-500" : ""
-                    }`}
-                    placeholder="Enter first name"
-                  />
-                  {errors.firstName && (
-                    <p className="text-red-600 text-sm">{errors.firstName}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label className="block text-gray-700 font-medium">Last Name</label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={data.lastName}
-                    onChange={handleChange}
-                    className={`w-full border rounded-md p-2 focus:ring-2 focus:ring-[#fdbd33] outline-none ${
-                      errors.lastName ? "border-red-500" : ""
-                    }`}
-                    placeholder="Enter last name"
-                  />
-                  {errors.lastName && (
-                    <p className="text-red-600 text-sm">{errors.lastName}</p>
-                  )}
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-gray-700 font-medium">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={data.email}
-                  onChange={handleChange}
-                  className={`w-full border rounded-md p-2 focus:ring-2 focus:ring-[#fdbd33] outline-none ${
-                    errors.email ? "border-red-500" : ""
-                  }`}
-                  placeholder="Enter your email"
-                />
-                {errors.email && (
-                  <p className="text-red-600 text-sm">{errors.email}</p>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-gray-700 font-medium">Phone</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={data.phone}
-                  onChange={handleChange}
-                  className={`w-full border rounded-md p-2 focus:ring-2 focus:ring-[#fdbd33] outline-none ${
-                    errors.phone ? "border-red-500" : ""
-                  }`}
-                  placeholder="Enter 10-digit number"
-                />
-                {errors.phone && (
-                  <p className="text-red-600 text-sm">{errors.phone}</p>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-gray-700 font-medium">Message</label>
-                <textarea
-                  name="message"
-                  value={data.message}
-                  onChange={handleChange}
-                  className="w-full border rounded-md p-2 h-24 resize-none focus:ring-2 focus:ring-[#fdbd33] outline-none"
-                  placeholder="Any special request?"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-[#fdbd33] text-white font-semibold py-3 rounded-md hover:bg-[#fcb000] transition"
-              >
-                Confirm Booking - ₹{total.toFixed(2)}
-              </button>
-            </form>
+  return (
+<div className="fixed inset-0 bg-black/40 z-50 overflow-auto">
+  <div className="flex min-h-screen items-center justify-center p-4">
+    <div className="bg-white rounded-xl shadow-lg max-w-4xl w-full 
+                    mt-4 mb-4 md:mt-0 md:mb-0">
+          <div className="flex justify-between items-center p-4 border-b">
+            <h2 className="text-2xl font-bold">Complete Your Booking</h2>
+            <button onClick={onClose} className="hover:bg-gray-100 p-2 rounded-full">
+              <X className="w-5 h-5" />
+            </button>
           </div>
 
-          {/* RIGHT: Hotel Summary */}
-          <div className="bg-gray-50 rounded-lg p-4">
-            <img
-              src={hotel.image}
-              alt={hotel.name}
-              className="w-full h-40 object-cover rounded-lg mb-3"
-            />
-            <h3 className="font-semibold text-lg">{hotel.name}</h3>
-            <p className="text-gray-600 flex items-center text-sm mt-1">
-              <MapPin className="w-4 h-4 mr-1" /> {hotel.location}
-            </p>
-            <p className="text-gray-600 flex items-center text-sm mt-1">
-              <Star className="w-4 h-4 mr-1 text-yellow-400 fill-yellow-400" />{" "}
-              {hotel.rating} ({hotel.reviews} reviews)
-            </p>
+          <div className="grid md:grid-cols-2 gap-6 p-6">
+            <div>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-gray-700 font-medium">First Name</label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      value={data.firstName}
+                      onChange={handleChange}
+                      className={`w-full border rounded-md p-2 focus:ring-2 focus:ring-[#fdbd33] outline-none ${errors.firstName ? "border-red-500" : ""
+                        }`}
+                      placeholder="Enter first name"
+                    />
+                    {errors.firstName && (
+                      <p className="text-red-600 text-sm">{errors.firstName}</p>
+                    )}
+                  </div>
 
-            <hr className="my-3" />
+                  <div>
+                    <label className="block text-gray-700 font-medium">Last Name</label>
+                    <input
+                      type="text"
+                      name="lastName"
+                      value={data.lastName}
+                      onChange={handleChange}
+                      className={`w-full border rounded-md p-2 focus:ring-2 focus:ring-[#fdbd33] outline-none ${errors.lastName ? "border-red-500" : ""
+                        }`}
+                      placeholder="Enter last name"
+                    />
+                    {errors.lastName && (
+                      <p className="text-red-600 text-sm">{errors.lastName}</p>
+                    )}
+                  </div>
+                </div>
 
-            <p className="flex items-center text-sm text-gray-700">
-              <Calendar className="w-4 h-4 mr-1 text-gray-500" />{" "}
-              {new Date(checkIn).toLocaleDateString()} →{" "}
-              {new Date(checkOut).toLocaleDateString()}
-            </p>
-            <p className="flex items-center text-sm text-gray-700 mt-1">
-              <Users className="w-4 h-4 mr-1 text-gray-500" /> {guests} Guests
-            </p>
+                <div>
+                  <label className="block text-gray-700 font-medium">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={data.email}
+                    onChange={handleChange}
+                    className={`w-full border rounded-md p-2 focus:ring-2 focus:ring-[#fdbd33] outline-none ${errors.email ? "border-red-500" : ""
+                      }`}
+                    placeholder="Enter your email"
+                  />
+                  {errors.email && (
+                    <p className="text-red-600 text-sm">{errors.email}</p>
+                  )}
+                </div>
 
-            <div className="mt-4 text-sm text-gray-800 space-y-1">
-              <div className="flex justify-between">
-                <span>₹{hotel.price} × {nights} nights</span>
-                <span>₹{subtotal.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Taxes (12%)</span>
-                <span>₹{taxes.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between font-semibold border-t pt-2">
-                <span>Total</span>
-                <span>₹{total.toFixed(2)}</span>
+                <div>
+                  <label className="block text-gray-700 font-medium">Phone</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={data.phone}
+                    onChange={handleChange}
+                    className={`w-full border rounded-md p-2 focus:ring-2 focus:ring-[#fdbd33] outline-none ${errors.phone ? "border-red-500" : ""
+                      }`}
+                    placeholder="Enter 10-digit number"
+                  />
+                  {errors.phone && (
+                    <p className="text-red-600 text-sm">{errors.phone}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-gray-700 font-medium">Message</label>
+                  <textarea
+                    name="message"
+                    value={data.message}
+                    onChange={handleChange}
+                    className="w-full border rounded-md p-2 h-24 resize-none focus:ring-2 focus:ring-[#fdbd33] outline-none"
+                    placeholder="Any special request?"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-[#fdbd33] text-white font-semibold py-3 rounded-md hover:bg-[#fcb000] transition"
+                >
+                  Confirm Booking - ₹{total.toFixed(2)}
+                </button>
+              </form>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-4">
+              <img
+                src={hotel.image}
+                alt={hotel.name}
+                className="w-full h-40 object-cover rounded-lg mb-3"
+              />
+              <h3 className="font-semibold text-lg">{hotel.name}</h3>
+              <p className="text-gray-600 flex items-center text-sm mt-1">
+                <MapPin className="w-4 h-4 mr-1" /> {hotel.location}
+              </p>
+              <p className="text-gray-600 flex items-center text-sm mt-1">
+                <Star className="w-4 h-4 mr-1 text-yellow-400 fill-yellow-400" />{" "}
+                {hotel.rating} ({hotel.reviews} reviews)
+              </p>
+
+              <hr className="my-3" />
+
+              <p className="flex items-center text-sm text-gray-700">
+                <Calendar className="w-4 h-4 mr-1 text-gray-500" />{" "}
+                {new Date(checkIn).toLocaleDateString()} →{" "}
+                {new Date(checkOut).toLocaleDateString()}
+              </p>
+              <p className="flex items-center text-sm text-gray-700 mt-1">
+                <Users className="w-4 h-4 mr-1 text-gray-500" /> {guests} Guests
+              </p>
+
+              <div className="mt-4 text-sm text-gray-800 space-y-1">
+                <div className="flex justify-between">
+                  <span>₹{hotel.price} × {nights} nights</span>
+                  <span>₹{subtotal.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Taxes (12%)</span>
+                  <span>₹{taxes.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between font-semibold border-t pt-2">
+                  <span>Total</span>
+                  <span>₹{total.toFixed(2)}</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
 
 
   );
