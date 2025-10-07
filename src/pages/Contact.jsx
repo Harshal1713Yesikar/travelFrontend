@@ -26,7 +26,6 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       await schema.validate(data, { abortEarly: false });
       setErrors({}); 

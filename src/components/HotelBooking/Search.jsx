@@ -42,7 +42,7 @@ export function SearchBar({ filters, onFiltersChange }) {
     setShowSuggestions(false);
   };
 
-    const getTomorrowDate = () => {
+  const getTomorrowDate = () => {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     return tomorrow.toISOString().split('T')[0];
@@ -102,7 +102,7 @@ export function SearchBar({ filters, onFiltersChange }) {
           <input
             type="date"
             value={filters.checkIn}
-              min={getTomorrowDate()}
+            min={getTomorrowDate()}
             onChange={(e) => handleInputChange('checkIn', e.target.value)}
             className="w-full px-4 py-3 border  rounded-lg  text-black focus:ring-2 focus:ring-[#fdbd33] outline-none focus:border-transparent transition-all"
           />
@@ -115,7 +115,7 @@ export function SearchBar({ filters, onFiltersChange }) {
           </label>
           <input
             type="date"
-         min={getTomorrowDate()}    
+            min={getTomorrowDate()}
             value={filters.checkOut}
             onChange={(e) => handleInputChange('checkOut', e.target.value)}
             className="w-full px-4 py-3 border  rounded-lg  text-black focus:ring-2 focus:ring-[#fdbd33] outline-none focus:border-transparent transition-all"
@@ -142,10 +142,7 @@ export function SearchBar({ filters, onFiltersChange }) {
       </div>
 
       <div className="mt-6 flex justify-center">
-        <button className=" text-white px-12 py-4 rounded-xl font-semibold text-lg bg-[#fdbd33]  hover:bg-[#fcb000] transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-2">
-          <Search className="w-5 h-5" />
-          Search Hotels
-        </button>
+
       </div>
 
 
