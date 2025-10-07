@@ -72,7 +72,7 @@ export function SearchBar({ filters, onFiltersChange }) {
                 setShowSuggestions(filtered.length > 0);
               }
             }}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-black focus:ring-blue-500 focus:border-transparent transition-all"
+            className="w-full px-4 py-3 border rounded-lg focus:ring-2 text-black  focus:ring-[#fdbd33] outline-none focus:border-transparent transition-all"
           />
 
           {showSuggestions && (
@@ -104,7 +104,7 @@ export function SearchBar({ filters, onFiltersChange }) {
             value={filters.checkIn}
               min={getTomorrowDate()}
             onChange={(e) => handleInputChange('checkIn', e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-black focus:ring-blue-500 focus:border-transparent transition-all"
+            className="w-full px-4 py-3 border  rounded-lg  text-black focus:ring-2 focus:ring-[#fdbd33] outline-none focus:border-transparent transition-all"
           />
         </div>
 
@@ -118,7 +118,7 @@ export function SearchBar({ filters, onFiltersChange }) {
          min={getTomorrowDate()}    
             value={filters.checkOut}
             onChange={(e) => handleInputChange('checkOut', e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-black focus:ring-blue-500 focus:border-transparent transition-all"
+            className="w-full px-4 py-3 border  rounded-lg  text-black focus:ring-2 focus:ring-[#fdbd33] outline-none focus:border-transparent transition-all"
           />
         </div>
 
@@ -130,7 +130,7 @@ export function SearchBar({ filters, onFiltersChange }) {
           <select
             value={filters.guests}
             onChange={(e) => handleInputChange('guests', parseInt(e.target.value))}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-black focus:ring-blue-500 focus:border-transparent transition-all"
+            className="w-full px-4 py-3 border  rounded-lg  text-black focus:ring-2 focus:ring-[#fdbd33] outline-none focus:border-transparent transition-all"
           >
             {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
               <option key={num} value={num}>

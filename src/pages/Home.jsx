@@ -548,7 +548,7 @@ const Home = () => {
                           name="email"
                           value={data.email}
                           onChange={handleChange}
-                          className="w-full h-12 sm:h-14 pl-12 pr-16 sm:pr-36 rounded-full border-2 border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm transition-all duration-200 text-gray-900 placeholder-gray-500"
+                          className="w-full h-12 sm:h-14 pl-12 pr-16 sm:pr-36 rounded-full border-2  focus:outline-none focus:ring-2 focus:ring-[#fdbd33] outline-none focus:border-transparent shadow-sm transition-all duration-200 text-gray-900 placeholder-gray-500"
                           placeholder="Enter your email address"
                           required
                           disabled={isSubscribed}
