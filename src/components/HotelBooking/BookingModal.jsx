@@ -217,6 +217,7 @@ export function BookingModal({
               </form>
             </div>
 
+          
             <div className="bg-gray-50 rounded-lg p-4">
               <img
                 src={hotel.image}

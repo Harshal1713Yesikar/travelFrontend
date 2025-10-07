@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
-import Contect from "./pages/Contact"
+import Contect from "./pages/Contact";
 import SighupPage from "./pages/SighUpPage";
 import Booking, { HotelBooking } from "./pages/HotelBooking";
 import HotelList from "./pages/HotelList";
@@ -14,32 +19,33 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import BookingsList from "./pages/HotelList";
 import AddDestination from "./components/DestinationMap/AddDestination";
 
-const App = () => {
-  
-  return (
-       <LanguageProvider>
 
-    <Router>
-      <Layout>
-        <Routes>
+const App = () => {
+  return (
+
+    
+    <LanguageProvider>
+      
+      <Router>
+        <Layout>
+          <Routes>
             <>
               <Route path="/" element={<Home />} />
               <Route path="/hotelList" element={<HotelList />} />
               <Route path="/Flight" element={<FlightSearch />} />
-              <Route  path="/contactUs" element={<Contect/>}/>
-              <Route path="/booking" element={<HotelBooking/>} />
-              <Route path="/login" element={<Login />}/>
+              <Route path="/contactUs" element={<Contect />} />
+              <Route path="/booking" element={<HotelBooking />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/sighup" element={<SighupPage />} />
-              <Route path="/admin" element={<Admin/>}/>
+              <Route path="/admin" element={<Admin />} />
               <Route path="/hotelList" element={<HotelList />} />
-              <Route path="/AddDestination" element={<AddDestination/>} />
+              <Route path="/AddDestination" element={<AddDestination />} />
             </>
-        </Routes> 
-              <Toaster position="bottom-right" reverseOrder={false} />
-
-      </Layout>
-    </Router>
-       </LanguageProvider>
+          </Routes>
+          <Toaster position="bottom-right" reverseOrder={false} />
+        </Layout>
+      </Router>
+    </LanguageProvider>
   );
 };
 
