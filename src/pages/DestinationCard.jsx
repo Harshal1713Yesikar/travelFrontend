@@ -13,6 +13,8 @@ const DestinationCard = ({ destination }) => {
   const [showDetails, setShowDetails] = useState(false); 
 
   const confirmSave = () => {
+      const sound = new Audio('/click-sound.mp3');
+  sound.play();
     console.log("Booking confirmed for:", destination.name);
     handleAdd();
     setIsOpen(false);
