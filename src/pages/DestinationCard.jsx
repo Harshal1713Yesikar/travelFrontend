@@ -14,6 +14,7 @@ const DestinationCard = ({ destination }) => {
 
   const confirmSave = () => {
       const sound = new Audio('/click-sound.mp3');
+        sound.volume = 0.1;
   sound.play();
     console.log("Booking confirmed for:", destination.name);
     handleAdd();
