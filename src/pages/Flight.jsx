@@ -153,7 +153,7 @@ const FlightSearch = () => {
           <div className="order-2 lg:order-1 flex justify-center">
             <div className="relative">
               <img
-                src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="https://plus.unsplash.com/premium_photo-1661962354730-cda54fa4f9f1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fHBsYW5lfGVufDB8fDB8fHww"
                 alt="Travel the world"
                 className="w-full max-w-lg rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-300"
               />

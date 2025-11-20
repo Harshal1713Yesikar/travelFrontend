@@ -18,7 +18,7 @@ const Login = () => {
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" }); // clear error when typing
+    setErrors({ ...errors, [e.target.name]: "" }); 
   };
 
   const handleLogin = async () => {
@@ -27,7 +27,7 @@ const Login = () => {
 
     try {
       await schema.validate(data, { abortEarly: false });
-      setErrors({}); // clear previous errors
+      setErrors({}); 
 
       const res = await axios.post(
         `${process.env.REACT_APP_Backend_URL}/login`,
@@ -42,7 +42,7 @@ const Login = () => {
 
     } catch (err) {
       if (err.inner) {
-        // Yup validation errors
+       
         const validationErrors = {};
         err.inner.forEach((e) => {
           validationErrors[e.path] = e.message;

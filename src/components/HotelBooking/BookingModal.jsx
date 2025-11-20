@@ -68,6 +68,10 @@ export function BookingModal({
     try {
       await schema.validate(data, { abortEarly: false });
       setErrors({});
+      console.log("ENV:", process.env.REACT_APP_Backend_URL);
+
+      console.log("FINAL URL: ", `${process.env.REACT_APP_Backend_URL}/hotelbooking`);
+
 
       const bookingData = {
         firstname: data.firstName,
@@ -83,12 +87,12 @@ export function BookingModal({
         hotelLocation: hotel.location,
         hotelImage: hotel.image,
       };
-      const res = await axios.post("http://localhost:3001/hotelbooking", bookingData);
-      // const res = await axios.post(
-      //   `${process.env.REACT_APP_Backend_URL}/hotelbooking`,
-      //   bookingData,
-      //   { headers: { "Content-Type": "application/json" } }
-      // );
+      // const res = await axios.post("http://localhost:3001/hotelbooking", bookingData);
+   const res = await axios.post(
+  `${process.env.REACT_APP_Backend_URL}/hotelbooking`,
+  bookingData,
+  { headers: { "Content-Type": "application/json" } }
+);
 
       toast.success("Booking Successful 🎉", { position: "bottom-right" });
       setData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
