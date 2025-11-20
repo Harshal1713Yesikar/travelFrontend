@@ -13,15 +13,13 @@ export function BookingModal({
   checkOut,
   guests
 }) {
-
-
-
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
+    message: "",
     specialRequests: '',
     checkIn,
     checkOut,
@@ -47,8 +45,6 @@ export function BookingModal({
       .required("Phone number is required"),
   });
 
-
-
   const calculateNights = () => {
     if (!checkIn || !checkOut) return 1;
     const start = new Date(checkIn);
@@ -68,17 +64,12 @@ export function BookingModal({
     try {
       await schema.validate(data, { abortEarly: false });
       setErrors({});
-      console.log("ENV:", process.env.REACT_APP_Backend_URL);
-
-      console.log("FINAL URL: ", `${process.env.REACT_APP_Backend_URL}/hotelbooking`);
-
-
       const bookingData = {
         firstname: data.firstName,
         lastname: data.lastName,
         email: data.email,
         phone: data.phone,
-        msg: data.message,
+        message: data.message,
         checkIn,
         checkOut,
         guests,
@@ -87,12 +78,12 @@ export function BookingModal({
         hotelLocation: hotel.location,
         hotelImage: hotel.image,
       };
-      // const res = await axios.post("http://localhost:3001/hotelbooking", bookingData);
-   const res = await axios.post(
-  `${process.env.REACT_APP_Backend_URL}/hotelbooking`,
-  bookingData,
-  { headers: { "Content-Type": "application/json" } }
-);
+
+      const res = await axios.post(
+        `${process.env.REACT_APP_Backend_URL}/hotelbooking`,
+        bookingData,
+        { headers: { "Content-Type": "application/json" } }
+      );
 
       toast.success("Booking Successful 🎉", { position: "bottom-right" });
       setData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
@@ -121,9 +112,9 @@ export function BookingModal({
   if (!isOpen) return null;
 
   return (
-<div className="fixed inset-0 bg-black/40 z-50 overflow-auto">
-  <div className="flex min-h-screen items-center justify-center p-4">
-    <div className="bg-white rounded-xl shadow-lg max-w-4xl w-full 
+    <div className="fixed inset-0 bg-black/40 z-50 overflow-auto">
+      <div className="flex min-h-screen items-center justify-center p-4">
+        <div className="bg-white rounded-xl shadow-lg max-w-4xl w-full 
                     mt-4 mb-4 md:mt-0 md:mb-0">
           <div className="flex justify-between items-center p-4 border-b">
             <h2 className="text-2xl font-bold">Complete Your Booking</h2>
@@ -221,7 +212,7 @@ export function BookingModal({
               </form>
             </div>
 
-          
+
             <div className="bg-gray-50 rounded-lg p-4">
               <img
                 src={hotel.image}
