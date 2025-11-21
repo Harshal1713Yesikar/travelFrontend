@@ -482,15 +482,15 @@ const Home = () => {
                 express parties use. Sure last upon he same
                 as knew next. Of believed or diverted no.”
               </p>
-              <p className="mt-10 text-[#5E6282] font-bold">Harshal Yesikar</p>
-              <p className="text-[#5E6282]">Indore,India</p>
+              <p className="mt-10 text-[#5E6282] font-bold">Dustin Henderson</p>
+              <p className="text-[#5E6282]">Howkin</p>
             </div>
 
             <div className=" z-10 h-40 w-96 p-10 flex flex-col shadow-[0_0_2px_rgba(20,10,10,0.10)] bg-white rounded-lg mt-52 ">
               <p className="text-[#5E6282] font-volkhov">
-              </p>
-              <p className="mt-16 text-[#5E6282] font-bold">Praful Marathe</p>
-              <p className="text-[#5E6282]"> Khetia,Pansemal</p>
+              </p>  
+              <p className="mt-16 text-[#5E6282] font-bold">Mike Wheeler</p>
+              <p className="text-[#5E6282]">Howkin</p>
             </div>
 
           </div>

@@ -98,6 +98,7 @@ const FlightSearch = () => {
 
     try {
       await flightSchema.validate(formData, { abortEarly: false });
+      
 
       const res = await axios.post(
         `${process.env.REACT_APP_Backend_URL}/flight`,
@@ -105,9 +106,9 @@ const FlightSearch = () => {
           city: formData.departureCity,
           arrivalCity: formData.arrivalCity,
           date: formData.departureDate,
+          returnDate: formData.returnDate,
           number: formData.passengers.toString(),
           tripType: formData.tripType,
-          returnDate: formData.returnDate,
         },
         { headers: { "Content-Type": "application/json" } }
       );
@@ -268,8 +269,8 @@ const FlightSearch = () => {
                       type="date"
                       value={formData.returnDate}
                       onChange={handleInputChange}
-                      min={formData.departureDate || getTomorrowDate()}
-                      className={`w-full px-4 py-3 pl-10 border  rounded-lg focus:ring-2 focus:ring-[#fdbd33] outline-none focus:border-transparent ${errors.departureDate ? "border-red-500 ring-1 ring-red-500" : ""
+                      min={getTomorrowDate()}
+                      className={`w-full px-4 py-3 pl-10 border  rounded-lg focus:ring-2 focus:ring-[#fdbd33] outline-none focus:border-transparent ${errors.returnDate ? "border-red-500 ring-1 ring-red-500" : ""
                         }`}
                     />
 

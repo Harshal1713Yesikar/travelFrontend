@@ -5,9 +5,11 @@ const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/bookings")
+   const res =  axios.get("http://localhost:3001/api/bookings")
       .then(res => setBookings(res.data))
       .catch(err => console.error(err));
+
+      console.log(res,"destination Save")
   }, []);
 
   return (
