@@ -87,10 +87,13 @@ const Home = () => {
 
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_Backend_URL}/subscribe`,
+        `http://myapplication-env.eba-5cgpcvrf.eu-north-1.elasticbeanstalk.com/subscribe`,
         data,
         { headers: { "Content-Type": "application/json" } }
       );
+
+
+      // const res = axios.post("/api/subscribe")
 
       console.log("API Response:", res.data);
 
@@ -488,7 +491,7 @@ const Home = () => {
 
             <div className=" z-10 h-40 w-96 p-10 flex flex-col shadow-[0_0_2px_rgba(20,10,10,0.10)] bg-white rounded-lg mt-52 ">
               <p className="text-[#5E6282] font-volkhov">
-              </p>  
+              </p>
               <p className="mt-16 text-[#5E6282] font-bold">Mike Wheeler</p>
               <p className="text-[#5E6282]">Howkin</p>
             </div>
@@ -618,7 +621,7 @@ const Home = () => {
         <div className="flex flex-col md:flex-row justify-center gap-2 md:gap-16 mt-12 animate-on-scroll">
           <div className="text-center md:text-left">
             <p className="font-poppins font-semibold text-4xl">Jadoo.</p>
-           <p className="w-80 md:w-68 text-[#5E6282] mt-7 font-semibold">
+            <p className="w-80 md:w-68 text-[#5E6282] mt-7 font-semibold">
               Your trusted travel companion for discovering amazing destinations,
               booking hotels, and creating unforgettable memories around the world.
             </p>

@@ -22,10 +22,7 @@ import AddDestination from "./components/DestinationMap/AddDestination";
 
 const App = () => {
   return (
-
-    
     <LanguageProvider>
-      
       <Router>
         <Layout>
           <Routes>
