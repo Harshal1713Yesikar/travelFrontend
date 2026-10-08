@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useScrollAnimation from "../useScrollAnimation";
-import SplashCursor from "../components/nurui/splash-cursor";
 import DestinationCard from "./DestinationCard";
 import MapView from "../components/DestinationMap/MapView"; 
 

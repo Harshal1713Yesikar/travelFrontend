@@ -32,11 +32,11 @@ const SignupPage = () => {
       await schema.validate(data, { abortEarly: false });
       setErrors({});
 
-      const res = await axios.post(
-        `${process.env.REACT_APP_Backend_URL}/register`,
-        data,
-        { headers: { "Content-Type": "application/json" } }
-      );
+      // const res = await axios.post(
+      //   `${process.env.REACT_APP_Backend_URL}/register`,
+      //   data,
+      //   { headers: { "Content-Type": "application/json" } }
+      // );
 
       toast.success("User registered successfully! ✅", { position: "bottom-right" });
       setData({ name: "", username: "", email: "", password: "" });

@@ -4,7 +4,6 @@ import { HotelCard } from '../components/HotelBooking/HotelCard';
 import { SearchBar } from '../components/HotelBooking/Search';
 import { FilterSidebar } from '../components/HotelBooking/FilterSideBar';
 import { BookingModal } from '../components/HotelBooking/BookingModal';
-import { Hotel, SearchFilters, BookingData } from '../types/hotel';
 import { Link, useSearchParams } from 'react-router-dom';
 
 export function HotelBooking() {

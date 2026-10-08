@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Trash, Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
 
 const AddDestination = () => {
@@ -49,7 +48,6 @@ const AddDestination = () => {
                 onClick={() => handleDelete(b._id)}
                 className="absolute top-2 right-2  text-white rounded-full p-2 shadow-md mt-3 mr-2 hover:bg-red-600"
               >
-                <Trash2 />
               </button>
 
               <img

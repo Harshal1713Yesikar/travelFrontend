@@ -1,9 +1,7 @@
-import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
 } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
@@ -16,7 +14,6 @@ import Login from "./pages/Login";
 import { Toaster } from "react-hot-toast";
 import Admin from "./pages/Admin";
 import { LanguageProvider } from "./contexts/LanguageContext";
-import BookingsList from "./pages/HotelList";
 import AddDestination from "./components/DestinationMap/AddDestination";
 
 
