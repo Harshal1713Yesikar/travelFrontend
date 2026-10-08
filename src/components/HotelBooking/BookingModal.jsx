@@ -4,6 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import * as Yup from "yup";
 
+
 export function BookingModal({
   hotel,
   isOpen,

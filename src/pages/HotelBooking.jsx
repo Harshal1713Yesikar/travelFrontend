@@ -5,10 +5,10 @@ import { SearchBar } from '../components/HotelBooking/Search';
 import { FilterSidebar } from '../components/HotelBooking/FilterSideBar';
 import { BookingModal } from '../components/HotelBooking/BookingModal';
 import { Hotel, SearchFilters, BookingData } from '../types/hotel';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 export function HotelBooking() {
-
+  const [searchParams] = useSearchParams();
   const [filteredHotels, setFilteredHotels] = useState(hotels);
   const [filters, setFilters] = useState({
     destination: '',
@@ -51,6 +51,20 @@ export function HotelBooking() {
     setFilteredHotels(filtered);
 
   }, [filters, sortBy]);
+
+    useEffect(() => {
+    const destinationFromAI = searchParams.get('destination');
+
+    if (destinationFromAI) {
+      setFilters((prevFilters) => ({
+        ...prevFilters,
+        destination: destinationFromAI,
+      }));
+    }
+  }, [searchParams]);
+
+
+  
 
   const handleBooking = (hotel) => {
     setSelectedHotel(hotel);

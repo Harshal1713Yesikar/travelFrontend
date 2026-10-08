@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { UserRoundCheck } from "lucide-react";
+import JadooChat from "./JadooChat";
 
 const Layout = ({ children }) => {
   const navigate = useNavigate();
@@ -160,6 +161,7 @@ const Layout = ({ children }) => {
       </nav>
 
       <main>{children}</main>
+      <JadooChat/>
     </div>
   );
 };
