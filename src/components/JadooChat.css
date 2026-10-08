@@ -1,0 +1,108 @@
+.jadoo-chat-button {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  width: 60px;
+  height: 60px;
+  border: none;
+ 
+
+  cursor: pointer;
+  
+}
+
+.jadoo-chat-box {
+  position: fixed;
+  right: 25px;
+  bottom: 95px;
+  width: 400px;
+  height: 600px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.jadoo-chat-header {
+  background: #181e4b;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.jadoo-chat-title {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.jadoo-chat-status {
+  font-size: 11px;
+  color: #90ee90;
+  margin-top: 3px;
+}
+
+.jadoo-chat-close {
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.jadoo-chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: #f8f9fc;
+}
+
+.jadoo-message {
+  max-width: 80%;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.jadoo-ai-message {
+  background: white;
+  color: #333;
+  border: 1px solid #eee;
+}
+
+.jadoo-user-message {
+  background: #f1a501;
+  color: white;
+  margin-left: auto;
+}
+
+.jadoo-chat-input-area {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #eee;
+  background: white;
+}
+
+.jadoo-chat-input-area input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  outline: none;
+}
+
+.jadoo-chat-input-area button {
+  width: 42px;
+  margin-left: 8px;
+  border: none;
+  border-radius: 10px;
+  background: #f1a501;
+  color: white;
+  cursor: pointer;
+}
