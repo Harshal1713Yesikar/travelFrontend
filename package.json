@@ -39,16 +39,12 @@
     "web-vitals": "^2.1.4",
     "yup": "^1.7.1"
   },
-  "scripts": {
-    "start": "react-scripts start",
-<<<<<<< HEAD
-    "build": "react-scripts build",
-=======
-   "build": "react-scripts build",
->>>>>>> 3c9c1cfa7212cf6656268e3f616210290e8b67da
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+"scripts": {
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},
   "eslintConfig": {
     "extends": [
       "react-app",
