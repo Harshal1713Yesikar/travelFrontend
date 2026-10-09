@@ -36,7 +36,7 @@ return ( <div className="bg-white rounded-xl p-6 shadow-lg sticky top-4"> <div c
     <h4 className="font-medium text-gray-700 mb-4">Price Range</h4>
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <span className="text-sm text-gray-600">₹0</span>
+        <span className="text-sm text-gray-600">₹500</span>
         <span className="text-sm text-gray-600">₹5000+</span>
       </div>
       <input

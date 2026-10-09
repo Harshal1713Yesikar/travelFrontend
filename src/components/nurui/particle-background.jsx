@@ -8,14 +8,12 @@ const ParticleBackground = () => {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    // Set canvas dimensions
     const setCanvasDimensions = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
     setCanvasDimensions();
     window.addEventListener("resize", setCanvasDimensions);
-    // Particle class
     class Particle {
       x;
       y;
@@ -49,7 +47,6 @@ const ParticleBackground = () => {
         ctx.fill();
       }
     }
-    // Create particles
     const particleCount = Math.min(
       100,
       Math.floor((window.innerWidth * window.innerHeight) / 10000),
@@ -58,11 +55,9 @@ const ParticleBackground = () => {
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
-    // Animation loop
     const animate = () => {
       if (!ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      // Draw connections
       ctx.strokeStyle = "rgba(245, 158, 11, 0.05)";
       ctx.lineWidth = 0.5;
       for (let i = 0; i < particles.length; i++) {
@@ -78,7 +73,6 @@ const ParticleBackground = () => {
           }
         }
       }
-      // Update and draw particles
       particles.forEach((particle) => {
         particle.update();
         particle.draw();

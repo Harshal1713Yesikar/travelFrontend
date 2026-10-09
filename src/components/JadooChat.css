@@ -1,108 +1,318 @@
+
 .jadoo-chat-button {
   position: fixed;
-  right: 25px;
-  bottom: 25px;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9999;
+
   width: 60px;
   height: 60px;
-  border: none;
- 
+  padding: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 50%;
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.18);
 
   cursor: pointer;
-  
+  transition: transform 0.2s ease;
+}
+
+.jadoo-chat-button:hover {
+  transform: scale(1.06);
+}
+
+.jadoo-chat-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .jadoo-chat-box {
   position: fixed;
-  right: 25px;
-  bottom: 95px;
-  width: 400px;
-  height: 600px;
-  background: white;
-  border-radius: 18px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  right: 24px;
+  bottom: 98px;
   z-index: 9999;
-  overflow: hidden;
+
+  width: 380px;
+  height: min(570px, calc(100dvh - 125px));
+  min-height: 320px;
+
   display: flex;
   flex-direction: column;
+
+  background: #ffffff;
+  border: 1px solid #e9e9e9;
+  border-radius: 20px;
+  box-shadow: 0 12px 45px rgba(0, 0, 0, 0.2);
+
+  overflow: hidden;
+  font-family: Arial, sans-serif;
 }
 
 .jadoo-chat-header {
-  background: #181e4b;
-  color: white;
-  padding: 15px;
+  flex-shrink: 0;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 16px 18px;
+  background: #f1a501;
+  color: #ffffff;
 }
 
 .jadoo-chat-title {
   font-size: 17px;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .jadoo-chat-status {
-  font-size: 11px;
-  color: #90ee90;
-  margin-top: 3px;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #ffffff;
 }
 
 .jadoo-chat-close {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+
   border: none;
-  background: transparent;
-  color: white;
-  font-size: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+
+  font-size: 25px;
+  line-height: 1;
   cursor: pointer;
 }
 
 .jadoo-chat-messages {
   flex: 1;
-  padding: 15px;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 16px;
   overflow-y: auto;
+  overscroll-behavior: contain;
   background: #f8f9fc;
 }
 
 .jadoo-message {
-  max-width: 80%;
-  padding: 10px 12px;
-  margin-bottom: 10px;
-  border-radius: 12px;
-  font-size: 13px;
-  line-height: 1.4;
+  width: fit-content;
+  max-width: 88%;
+  padding: 11px 14px;
+
+  border-radius: 15px;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 
 .jadoo-ai-message {
-  background: white;
-  color: #333;
-  border: 1px solid #eee;
+  align-self: flex-start;
+  background: #ffffff;
+  color: #252746;
+  border: 1px solid #ededf2;
+  border-bottom-left-radius: 5px;
 }
 
 .jadoo-user-message {
+  align-self: flex-end;
   background: #f1a501;
-  color: white;
-  margin-left: auto;
+  color: #ffffff;
+  border-bottom-right-radius: 5px;
+}
+
+.jadoo-action-card {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  margin-top: 8px;
+  padding: 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.jadoo-action-icon {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #fff4df;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.jadoo-action-content {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.jadoo-action-content strong {
+  color: #181e4b;
+  font-size: 13px;
+}
+
+.jadoo-action-content span {
+  color: #777777;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.jadoo-action-card button {
+  flex-shrink: 0;
+  padding: 9px 11px;
+
+  border: none;
+  border-radius: 8px;
+  background: #f1a501;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.jadoo-action-card button:hover {
+  background: #d99000;
 }
 
 .jadoo-chat-input-area {
+  flex-shrink: 0;
+
   display: flex;
-  padding: 10px;
-  border-top: 1px solid #eee;
-  background: white;
+  align-items: center;
+  gap: 8px;
+
+  padding: 12px;
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  background: #ffffff;
+  border-top: 1px solid #eeeeee;
 }
 
 .jadoo-chat-input-area input {
   flex: 1;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 10px;
+  min-width: 0;
+  height: 44px;
+  box-sizing: border-box;
+
+  padding: 0 13px;
+  border: 1px solid #dddddd;
+  border-radius: 13px;
   outline: none;
+
+  font-size: 16px;
+  background: #ffffff;
+  color: #222222;
+}
+
+.jadoo-chat-input-area input:focus {
+  border-color: #f1a501;
+  box-shadow: 0 0 0 2px rgba(241, 165, 1, 0.12);
 }
 
 .jadoo-chat-input-area button {
-  width: 42px;
-  margin-left: 8px;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   background: #f1a501;
-  color: white;
+  color: #ffffff;
+
+  font-size: 21px;
   cursor: pointer;
+}
+
+.jadoo-chat-input-area button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .jadoo-chat-button {
+    right: 16px;
+    bottom: 16px;
+    width: 54px;
+    height: 54px;
+  }
+
+  .jadoo-chat-box {
+    right: 10px;
+    bottom: 80px;
+
+    width: calc(100% - 20px);
+    max-width: 420px;
+    height: min(600px, calc(100dvh - 100px));
+    min-height: 280px;
+
+    border-radius: 18px;
+  }
+
+  .jadoo-chat-header {
+    padding: 13px 15px;
+  }
+
+  .jadoo-chat-messages {
+    padding: 12px;
+  }
+
+  .jadoo-message {
+    max-width: 92%;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .jadoo-chat-box {
+    right: 6px;
+    bottom: 72px;
+    width: calc(100% - 12px);
+    height: calc(100dvh - 88px);
+    border-radius: 15px;
+  }
+
+  .jadoo-action-card {
+    gap: 7px;
+    padding: 9px;
+  }
+
+  .jadoo-action-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 17px;
+  }
+
+  .jadoo-action-card button {
+    padding: 8px;
+    font-size: 11px;
+  }
 }

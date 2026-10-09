@@ -34,10 +34,8 @@ export default function SplashCursor({
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return; // Guard canvas early
-    // Pointer and config setup
     const pointers = [pointerPrototype()];
-    // All these are guaranteed numbers due to destructuring defaults
-    // So we cast them to remove TS warnings:
+
     const config = {
       SIM_RESOLUTION: SIM_RESOLUTION,
       DYE_RESOLUTION: DYE_RESOLUTION,
@@ -55,10 +53,8 @@ export default function SplashCursor({
       BACK_COLOR,
       TRANSPARENT,
     };
-    // Get WebGL context (WebGL1 or WebGL2)
     const { gl, ext } = getWebGLContext(canvas);
     if (!gl || !ext) return;
-    // If no linear filtering, reduce resolution
     if (!ext.supportLinearFiltering) {
       config.DYE_RESOLUTION = 256;
       config.SHADING = false;
@@ -84,11 +80,9 @@ export default function SplashCursor({
       let supportLinearFiltering = false;
       let halfFloat = null;
       if (isWebGL2) {
-        // For WebGL2
         gl.getExtension("EXT_color_buffer_float");
         supportLinearFiltering = !!gl.getExtension("OES_texture_float_linear");
       } else {
-        // For WebGL1
         halfFloat = gl.getExtension("OES_texture_half_float");
         supportLinearFiltering = !!gl.getExtension(
           "OES_texture_half_float_linear",
@@ -130,7 +124,6 @@ export default function SplashCursor({
     }
     function getSupportedFormat(gl, internalFormat, format, type) {
       if (!supportRenderTextureFormat(gl, internalFormat, format, type)) {
-        // For WebGL2 fallback:
         if ("drawBuffers" in gl) {
           const gl2 = gl;
           switch (internalFormat) {
@@ -283,7 +276,6 @@ export default function SplashCursor({
         }
       }
     }
-    // -------------------- Shaders --------------------
     const baseVertexShader = compileShader(
       gl.VERTEX_SHADER,
       `
@@ -568,7 +560,6 @@ export default function SplashCursor({
       }
     `,
     );
-    // -------------------- Fullscreen Triangles --------------------
     const blit = (() => {
       const buffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -602,13 +593,11 @@ export default function SplashCursor({
         gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
       };
     })();
-    // FBO variables
     let dye;
     let velocity;
     let divergence;
     let curl;
     let pressure;
-    // WebGL Programs
     const copyProgram = new Program(baseVertexShader, copyShader);
     const clearProgram = new Program(baseVertexShader, clearShader);
     const splatProgram = new Program(baseVertexShader, splatShader);
@@ -874,7 +863,6 @@ export default function SplashCursor({
     }
     function step(dt) {
       gl.disable(gl.BLEND);
-      // Curl
       curlProgram.bind();
       if (curlProgram.uniforms.texelSize) {
         gl.uniform2f(
@@ -887,7 +875,6 @@ export default function SplashCursor({
         gl.uniform1i(curlProgram.uniforms.uVelocity, velocity.read.attach(0));
       }
       blit(curl);
-      // Vorticity
       vorticityProgram.bind();
       if (vorticityProgram.uniforms.texelSize) {
         gl.uniform2f(
@@ -913,7 +900,6 @@ export default function SplashCursor({
       }
       blit(velocity.write);
       velocity.swap();
-      // Divergence
       divergenceProgram.bind();
       if (divergenceProgram.uniforms.texelSize) {
         gl.uniform2f(
@@ -929,7 +915,6 @@ export default function SplashCursor({
         );
       }
       blit(divergence);
-      // Clear pressure
       clearProgram.bind();
       if (clearProgram.uniforms.uTexture) {
         gl.uniform1i(clearProgram.uniforms.uTexture, pressure.read.attach(0));
@@ -939,7 +924,6 @@ export default function SplashCursor({
       }
       blit(pressure.write);
       pressure.swap();
-      // Pressure
       pressureProgram.bind();
       if (pressureProgram.uniforms.texelSize) {
         gl.uniform2f(
@@ -964,7 +948,6 @@ export default function SplashCursor({
         blit(pressure.write);
         pressure.swap();
       }
-      // Gradient Subtract
       gradienSubtractProgram.bind();
       if (gradienSubtractProgram.uniforms.texelSize) {
         gl.uniform2f(
@@ -987,7 +970,6 @@ export default function SplashCursor({
       }
       blit(velocity.write);
       velocity.swap();
-      // Advection - velocity
       advectionProgram.bind();
       if (advectionProgram.uniforms.texelSize) {
         gl.uniform2f(
@@ -1024,7 +1006,6 @@ export default function SplashCursor({
       }
       blit(velocity.write);
       velocity.swap();
-      // Advection - dye
       if (
         !ext.supportLinearFiltering &&
         advectionProgram.uniforms.dyeTexelSize
@@ -1120,7 +1101,6 @@ export default function SplashCursor({
       dye.swap();
     }
     function correctRadius(radius) {
-      // Use non-null assertion (canvas can't be null here)
       const aspectRatio = canvas.width / canvas.height;
       if (aspectRatio > 1) radius *= aspectRatio;
       return radius;
@@ -1216,7 +1196,6 @@ export default function SplashCursor({
       if (range === 0) return min;
       return ((value - min) % range) + min;
     }
-    // -------------------- Event Listeners --------------------
     window.addEventListener("mousedown", (e) => {
       const pointer = pointers[0];
       const posX = scaleByPixelRatio(e.clientX);
@@ -1224,7 +1203,6 @@ export default function SplashCursor({
       updatePointerDownData(pointer, -1, posX, posY);
       clickSplat(pointer);
     });
-    // Start rendering on first mouse move
     function handleFirstMouseMove(e) {
       const pointer = pointers[0];
       const posX = scaleByPixelRatio(e.clientX);
@@ -1242,7 +1220,6 @@ export default function SplashCursor({
       const color = pointer.color;
       updatePointerMoveData(pointer, posX, posY, color);
     });
-    // Start rendering on first touch
     function handleFirstTouchStart(e) {
       const touches = e.targetTouches;
       const pointer = pointers[0];
@@ -1288,7 +1265,6 @@ export default function SplashCursor({
         updatePointerUpData(pointer);
       }
     });
-    // ------------------------------------------------------------
   }, [
     SIM_RESOLUTION,
     DYE_RESOLUTION,
