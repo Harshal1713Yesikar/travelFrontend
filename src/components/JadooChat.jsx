@@ -79,7 +79,6 @@ const JadooChat = () => {
     const handleAction = (action) => {
         if (!action) return;
 
-        // 🏨 Hotels
         if (action.type === "hotel_search") {
             navigate(
                 `/booking?destination=${encodeURIComponent(
@@ -91,7 +90,6 @@ const JadooChat = () => {
             return;
         }
 
-        // ✈️ Flights
         if (action.type === "flight_search") {
             navigate(
                 `/Flight?from=${encodeURIComponent(
@@ -103,7 +101,6 @@ const JadooChat = () => {
             return;
         }
 
-        // 📍 Destinations
         if (action.type === "destination_search") {
             navigate(
                 `/hotelList?destination=${encodeURIComponent(
@@ -141,7 +138,6 @@ const JadooChat = () => {
             {isOpen && (
                 <div className="jadoo-chat-box">
 
-                    {/* Header */}
                     <div className="jadoo-chat-header">
                         <div>
                             <div className="jadoo-chat-title">
@@ -159,7 +155,6 @@ const JadooChat = () => {
                         </button>
                     </div>
 
-                    {/* Messages */}
                     <div className="jadoo-chat-messages">
 
                         {messages.map((message, index) => (
@@ -174,7 +169,6 @@ const JadooChat = () => {
                                     {message.content}
                                 </div>
 
-                                {/* Hotel Search Card */}
                                 {message.action?.type === "hotel_search" && (
                                     <div className="jadoo-action-card">
 
@@ -203,7 +197,6 @@ const JadooChat = () => {
                                     </div>
                                 )}
 
-                                {/* Flight Search Card */}
                                 {message.action?.type === "flight_search" && (
                                     <div className="jadoo-action-card">
 
@@ -233,7 +226,6 @@ const JadooChat = () => {
                                     </div>
                                 )}
 
-                                {/* Flight Search Card */}
                                 {message.action?.type === "flight_search" && (
                                     <div className="jadoo-action-card">
                                         <div className="jadoo-action-icon">
@@ -261,7 +253,6 @@ const JadooChat = () => {
                                     </div>
                                 )}
 
-                                {/* 👇 ISKE JUST BAAD DESTINATION CARD */}
                                 {message.action?.type === "destination_search" && (
                                     <div className="jadoo-action-card">
                                         <div className="jadoo-action-icon">
@@ -300,7 +291,6 @@ const JadooChat = () => {
 
 
 
-                    {/* Input */}
                     <div className="jadoo-chat-input-area">
 
                         <input

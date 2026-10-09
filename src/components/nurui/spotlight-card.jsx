@@ -78,7 +78,6 @@ const GlowCard = ({
       position: "relative",
       touchAction: "none",
     };
-    // Add width and height if provided
     if (width !== undefined) {
       baseStyles.width = typeof width === "number" ? `${width}px` : width;
     }
